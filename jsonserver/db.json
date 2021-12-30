@@ -1,0 +1,247 @@
+{
+  "userInfo": {
+    "id": 1,
+    "fullName": "Golam Rabbani",
+    "phoneNumber": "01765891772",
+    "password": "12345678",
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlYTIxNDE5Yy04OWQ2LTQzMzYtODcwYi04OWE1YjA0YjFkNjgiLCJzdWIiOiIzZDg1NDVkNC1lYjUyLTQzMWEtYWJiZC1mZGQ1NmNmYzk4YzQiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJVc2VyIiwidXJsIjoiVXNlciIsImV4cCI6MTYzNTkxNDUzOCwiaXNzIjoiaHR0cDovL3d3dy50dXRlZXh5LmNvbSIsImF1ZCI6Imh0dHA6Ly93d3cudHV0ZWV4eS5jb20ifQ.zFBCzHGkBO6aOANerVufWcXIjb3tQoqpIqxZg20TNOQ",
+    "isSuccess": true,
+    "errors": null,
+    "expireDate": "2021-11-03T10:42:19.1046488+06:00",
+    "message": null,
+    "refreshToken": "af68d9ab-7341-4a53-8964-c780b005a481"
+  },
+  "expense": [
+    {
+      "id": 1,
+      "expenseName": "Telephone Expenses"
+    }
+  ],
+  "owners": [
+    {
+      "companyName": "saas",
+      "address": "dshdsgh",
+      "email": "saed@gmail.com",
+      "mobileNum": "5827423453245",
+      "website": "dfsghdfhdfhfdgdfg",
+      "id": 1
+    },
+    {
+      "companyName": "saas",
+      "address": "dshdsgh",
+      "email": "saed@gmail.com",
+      "mobileNum": "5827423453245",
+      "website": "dfsghdfhdfhfdgdfg",
+      "id": 2
+    }
+  ],
+  "roomFlat": [
+    {
+      "roomFlatName": "jumuna",
+      "id": 1
+    }
+  ],
+  "party": [
+    {
+      "name": "1234",
+      "address": "asdasdas",
+      "mobileNum": "1234",
+      "id": 1
+    }
+  ],
+  "user": [
+    {
+      "userName": "dfgdfgdfg",
+      "mobileNum": "5827423453245",
+      "password": "11111111",
+      "id": 2
+    },
+    {
+      "userName": "dfgdfgdfg",
+      "mobileNum": "015402544112",
+      "password": "123123123",
+      "confirmPassword": "123123123",
+      "id": 3
+    },
+    {
+      "userName": "dfgdfgdfg",
+      "mobileNum": "5827423453245",
+      "password": "11111111",
+      "id": 4
+    }
+  ],
+  "rental": [
+    {
+      "fatherName": "dfgsdfg",
+      "motherName": "sdfgsdfg",
+      "currentAddress": "sdfgsdfgsdfg",
+      "permanentAddress": "sdfgdfgsd",
+      "nidNumber": "453456345",
+      "dateOfBirth": "sdfgdsfgsdfg",
+      "email": "saed@gmail.com",
+      "mobileNum": "5827423453245",
+      "nameOfGuardian": "sdfgsdfgsdfg",
+      "relations": "sdfgsdfgsdfg",
+      "guardianMobileNum": "453453453",
+      "numOfMembers": "453453453",
+      "id": 1
+    }
+  ],
+  "electricityBill": [
+    {
+      "selectBuilding": "ebl",
+      "id": 1
+    }
+  ],
+  "ElectricityBillMonthSelect": [
+    {
+      "value": "123",
+      "label": "ABC"
+    },
+    {
+      "value": "1234",
+      "label": "ABCD"
+    }
+  ],
+  "ElectricityBillBuildingSelect": [
+    {
+      "value": "123",
+      "label": "ABC"
+    },
+    {
+      "value": "1234",
+      "label": "ABCD"
+    }
+  ],
+  "checkPayment": [
+    {
+      "selectBank": "ebl",
+      "description": "ebl",
+      "previousDeposit": "ebl",
+      "totalDeposits": "ebl",
+      "id": 1
+    },
+    {
+      "selectBank": "ABCD",
+      "description": "dfhfdgh",
+      "previousDeposit": "453453",
+      "totalDeposits": "4534534",
+      "totalDeposits2": "453453",
+      "id": 2
+    }
+  ],
+  "cash": [
+    {
+      "selectSector": "1234",
+      "description": "asdfgsadfg",
+      "totalAmount": "45345345",
+      "selectDate": "avv",
+      "id": 2
+    },
+    {
+      "selectDate": "2021-11-16",
+      "totalAmount": "41242345",
+      "description": "ewrfwerd",
+      "selectUnit": "",
+      "selectFlat": "",
+      "selectSector": "1234",
+      "id": 3
+    },
+    {
+      "selectDate": "2021-11-17",
+      "totalAmount": "41242345",
+      "description": "ew",
+      "selectUnit": "",
+      "selectFlat": "",
+      "selectSector": "1234",
+      "id": 4
+    }
+  ],
+  "cashSelectSector": [
+    {
+      "value": "123",
+      "label": "ABC"
+    },
+    {
+      "value": "1234",
+      "label": "ABCD"
+    }
+  ],
+  "duePurchase": [
+    {
+      "selectDate": "2021-11-02",
+      "totalAmount": "4142142",
+      "description": "",
+      "selectUnit": "",
+      "selectFlat": "",
+      "selectParty": "1234",
+      "selectSector": "1234",
+      "id": 3
+    }
+  ],
+  "duePurchaseParty": [
+    {
+      "value": "123",
+      "label": "ABC"
+    },
+    {
+      "value": "1234",
+      "label": "ABCD"
+    }
+  ],
+  "duePurchaseSector": [
+    {
+      "value": "123",
+      "label": "ABC"
+    },
+    {
+      "value": "1234",
+      "label": "ABCD"
+    }
+  ],
+  "transaction": [
+    {
+      "selectDate": "2021-11-02",
+      "totalAmount": "4142142",
+      "description": "",
+      "selectUnit": "",
+      "selectFlat": "",
+      "selectParty": "1234",
+      "selectSector": "1234",
+      "id": 3
+    }
+  ],
+  "renting": [
+    {
+      "selectDate": "2021-11-11",
+      "totalPaid": "453453",
+      "totalBill": "453453",
+      "selectFlat": "1234",
+      "selectBuilding": "1234",
+      "previousDebt": "45343",
+      "thisMonthBill": "453453",
+      "discount": "453453",
+      "id": 1
+    }
+  ],
+  "rentingSelectBuilding": [
+    {
+      "value": "123",
+      "label": "ABC"
+    },
+    {
+      "value": "1234",
+      "label": "ABCD"
+    }
+  ],
+  "rentingSelectFlat": [
+    {
+      "value": "123",
+      "label": "ABC"
+    },
+    {
+      "value": "1234",
+      "label": "ABCD"
+    }
+  ]
+}
