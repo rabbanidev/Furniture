@@ -9,6 +9,9 @@ module.exports = {
       gridTemplateColumns: {
         layout: "2fr 9fr",
       },
+      width: {
+        navmenu: "36rem",
+      },
       colors: {
         primary: "#273238",
         secondary: "#EAEDF7",
@@ -32,11 +35,11 @@ module.exports = {
       opacity: ["group-hover"],
       translate: ["group-hover"],
       transform: ["group-hover"],
-      width: ["group-hover", "hover"],
-      height: ["group-hover", "hover"],
-      padding: ["group-hover", "hover"],
-      animation: ["group-hover", "hover"],
-      scale: ["group-hover", "hover"],
+      width: ["group-hover", "hover", "focus"],
+      height: ["group-hover", "hover", "focus"],
+      padding: ["group-hover", "hover", "focus"],
+      animation: ["group-hover", "hover", "focus"],
+      scale: ["group-hover", "hover", "focus"],
       backgroundColor: ["checked", "odd", "even"],
       borderColor: ["checked"],
     },

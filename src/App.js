@@ -1,10 +1,10 @@
 import React, { lazy, Suspense } from "react";
 import { Toaster } from "react-hot-toast";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Layout from "./components/Layout/Layout";
 import { FallbackLoading } from "./components/Loading";
 
 import "./App.css";
+import ModLanding from "./modLanding";
 
 const NotFound = lazy(() => import("./components/NotFound"));
 
@@ -15,7 +15,7 @@ function App() {
         <Toaster position="top-right" reverseOrder={false} />
         <Switch>
           <Route exact path="/">
-            <Layout />
+            <ModLanding />
           </Route>
 
           <Route path="*">
