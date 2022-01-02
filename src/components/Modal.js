@@ -1,16 +1,16 @@
 import React from "react";
 import { FiX } from "react-icons/fi";
 
-const Modal = ({ open, children, onClose }) => {
+const Modal = ({ open, children, onClose, modalPosition }) => {
   if (!open) {
     return null;
   }
   return (
-    <div className="modal">
-      <div className="modal-backdrop">
-        <div className="modal-box">
+    <div className="fixed inset-0">
+      <div className="w-screen h-screen bg-backdrop">
+        <div className={`bg-white text-black p-5 ${modalPosition}`}>
           <div className="flex justify-end">
-            <button className="modal-btn" onClick={onClose}>
+            <button className="bg-primary p-2 text-secondary" onClick={onClose}>
               <FiX />
             </button>
           </div>

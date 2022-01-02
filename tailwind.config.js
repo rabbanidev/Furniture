@@ -22,6 +22,7 @@ module.exports = {
         light: "#f4f4fd",
         linkcolor: "rgba(255, 255, 255, 0.4)",
         dark: "#25233C",
+        backdrop: "rgba(0,0,0,.5)",
       },
       fontFamily: {
         body: ["Montserrat"],

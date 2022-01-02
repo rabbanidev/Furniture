@@ -62,4 +62,3 @@ const Banner = () => {
 };
 
 export default Banner;
-// no-repeat center center

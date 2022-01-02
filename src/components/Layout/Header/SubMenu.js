@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const SubMenu = ({ item }) => {
   return (
     <li className="py-1 relative group">
-      <Link className="nav-item" to="/">
+      <Link className="nav-item" to={item.to}>
         {item.title}
       </Link>
       <ul className="sub-nav">
@@ -19,7 +19,7 @@ const SubMenu = ({ item }) => {
                   category.subCategories.map((subCategory, idx) => (
                     <li key={idx}>
                       <Link
-                        to={subCategory.idx}
+                        to={subCategory.to}
                         className="text-black block py-2"
                       >
                         {subCategory.title}
