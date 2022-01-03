@@ -8,8 +8,7 @@ const content = [
     description:
       "Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cras justo odio, dapibus ac facilisis.",
     button: "Read More",
-    image:
-      "http://www.simpleimageresizer.com/_uploads/photos/07fa4b86/sofa_3_1600x700.jpg",
+    image: "https://i.ibb.co/4T5S9XZ/sofa-1600x700.jpg",
     user: "Luan Gjokaj",
     userProfile: "https://i.imgur.com/JSW6mEk.png",
   },
@@ -18,8 +17,7 @@ const content = [
     description:
       "Nullam id dolor id nibh ultricies vehicula ut id elit. Cras mattis consectetur purus sit amet fermentum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec sed odio dui.",
     button: "Discover",
-    image:
-      "http://www.simpleimageresizer.com/_uploads/photos/07fa4b86/sofa_2_1_1600x700.jpg",
+    image: "https://i.ibb.co/4T5S9XZ/sofa-1600x700.jpg",
     user: "Erich Behrens",
     userProfile: "https://i.imgur.com/0Clfnu7.png",
   },
@@ -29,19 +27,9 @@ const content = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Duis mollis, est non commodo luctus, nisi erat porttitor ligula.",
     button: "Buy now",
     image:
-      "http://www.simpleimageresizer.com/_uploads/photos/07fa4b86/sofa_3_1_1600x700.jpg",
+      "http://www.simpleimageresizer.com/_uploads/photos/618c009c/Slider-1294X560px-4-1024x443_1600x700.jpg",
     user: "Bruno Vizovskyy",
     userProfile: "https://i.imgur.com/4KeKvtH.png",
-  },
-  {
-    title: "Ultricies Vulputate Mollis Fermentum Parturient",
-    description:
-      "Aenean eu leo quam. Pellentesque ornare sem lacinia  nibh, ut fermentum massa justo sit amet risus. Cras justo odio, dapibus ac facilisis.",
-    button: "Read More",
-    image:
-      "http://www.simpleimageresizer.com/_uploads/photos/07fa4b86/sofa_4_1600x700.jpg",
-    user: "Luan Gjokaj",
-    userProfile: "https://i.imgur.com/JSW6mEk.png",
   },
 ];
 
@@ -55,7 +43,13 @@ const Banner = () => {
           style={{
             background: `url('${item.image}') no-repeat center center`,
           }}
-        ></div>
+        >
+          <div className="inner">
+            <h1>{item.title}</h1>
+            <p>{item.description}</p>
+            <button>{item.button}</button>
+          </div>
+        </div>
       ))}
     </Slider>
   );

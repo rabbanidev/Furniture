@@ -8,13 +8,13 @@ const Modal = ({ open, children, onClose, modalPosition }) => {
   return (
     <div className="fixed inset-0">
       <div className="w-screen h-screen bg-backdrop">
-        <div className={`bg-white text-black p-5 ${modalPosition}`}>
-          <div className="flex justify-end">
-            <button className="bg-primary p-2 text-secondary" onClick={onClose}>
-              <FiX />
+        <div className={`bg-white text-black p-10 ${modalPosition}`}>
+          <div className="absolute -top-1.5 -right-9">
+            <button className="text-white" onClick={onClose}>
+              <FiX size={30} />
             </button>
           </div>
-          <div>{children}</div>
+          {children}
         </div>
       </div>
     </div>
@@ -22,3 +22,4 @@ const Modal = ({ open, children, onClose, modalPosition }) => {
 };
 
 export default Modal;
+// flex justify-end

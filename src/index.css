@@ -17,13 +17,13 @@
 /* layout end */
 
 .form-col {
-  @apply grid grid-cols-1 gap-4 mt-4 p-4;
+  @apply grid grid-cols-1 gap-8;
 }
 .form-row {
-  @apply grid grid-cols-1 lg:pr-96;
+  @apply grid grid-cols-1;
 }
 .form-control {
-  @apply w-full p-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none sm:text-sm;
+  @apply w-full p-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none sm:text-sm;
 }
 .input-border-primary {
   @apply focus:ring-primary focus:border-primary;

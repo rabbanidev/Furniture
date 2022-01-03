@@ -59,3 +59,69 @@
 .nextButton {
   right: 20px;
 }
+
+/* Content */
+.slider-content {
+  text-align: center;
+}
+.slider-content .inner {
+  padding: 0 70px;
+  box-sizing: border-box;
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.slider-content .inner h1 {
+  font-weight: 900;
+  margin: 0 auto;
+  max-width: 840px;
+  color: #ffffff;
+  font-size: 48px;
+  line-height: 1;
+}
+
+.slider-content .inner p {
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 20px auto 30px;
+  max-width: 640px;
+}
+
+/* Animation */
+.slide h1 {
+  transition: all 0.3s ease;
+  transform: translateY(-20px);
+  opacity: 0;
+}
+
+.slide button {
+  transition: all 0.3s ease;
+  transform: translateY(20px);
+  opacity: 0;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+}
+
+.slide p {
+  transition: all 0.3s ease;
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.slide.current h1,
+.slide.animateIn.next h1,
+.slide.current button,
+.slide.animateIn.next button,
+.slide.animateIn.previous p,
+.slide.current p {
+  transform: translateX(0);
+  transition-delay: 0.5s;
+  opacity: 1;
+}
+/* Slider Css start */

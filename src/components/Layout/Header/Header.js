@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Cart from "./Cart";
+import Cart from "./cart/Cart";
 import DesktopNavbar from "./DesktopNavbar";
-import Search from "./Search";
-import User from "./User";
+import Search from "./search/Search";
+import User from "./user/User";
 
 const Header = () => {
   return (
