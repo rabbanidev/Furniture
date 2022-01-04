@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Cart from "./cart/Cart";
 import DesktopNavbar from "./DesktopNavbar";
@@ -6,11 +8,27 @@ import Search from "./search/Search";
 import User from "./user/User";
 
 const Header = () => {
+  const { pathname } = useLocation();
+  const [headerClass, setHeaderClass] = useState("shadow h-20 text-black");
+
+  useEffect(() => {
+    if (pathname === "/") {
+      setHeaderClass("text-white");
+    }
+  }, [pathname]);
+
   return (
-    <div className="px-20 py-7 grid grid-cols-12 items-center w-full absolute top-0 left-0 z-50 text-white">
+    <div
+      className={`px-20 grid grid-cols-12 items-center w-full z-50 ${headerClass}`}
+    >
       <div className="col-span-2">
         <Link to="/">
-          <img src="/images/logo.png" alt="Furniture" />
+          <img
+            src={
+              pathname === "/" ? "/images/whitelogo.png" : "/images/logo.png"
+            }
+            alt="Furniture"
+          />
         </Link>
       </div>
       <div className="col-span-4 md:col-span-8">

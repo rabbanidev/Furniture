@@ -7,7 +7,7 @@ const SubMenu = ({ item }) => {
       <Link className="nav-item" to={item.to}>
         {item.title}
       </Link>
-      <ul className="sub-nav">
+      <ul className="sub-nav shadow">
         <div className={`px-8 grid grid-cols-${item.categories.length}`}>
           {item.categories.map((category, index) => (
             <div key={index}>

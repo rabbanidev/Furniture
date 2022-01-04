@@ -1,6 +1,8 @@
 import React from "react";
 import { FaSignInAlt } from "react-icons/fa";
+import PrimaryButton from "../../../button/PrimaryButton";
 import Input from "../../../Input";
+import ToggleMode from "./ToggleMode";
 
 const SignIn = ({ setToggle }) => {
   return (
@@ -20,29 +22,21 @@ const SignIn = ({ setToggle }) => {
             placeholder="Password*"
             register=""
           />
-          <button
-            className="w-32 py-2 px-4 text-gray-800 font-medium border border-gray-300 inline-flex items-center hover:bg-gray-800 hover:text-white"
-            type="button"
-          >
-            <span className="pr-3"> SIGN IN</span>
-            <FaSignInAlt />
-          </button>
+          <PrimaryButton
+            btnText="LOGIN"
+            Icon={FaSignInAlt}
+            type="submit"
+            btnWidth="w-32"
+          />
         </div>
       </form>
-      <div className="flex gap-x-6">
-        <h3
-          className="font-medium text-sm uppercase text-gray-400 cursor-pointer"
-          onClick={() => setToggle("signup")}
-        >
-          CREATE ACCOUNT
-        </h3>
-        <h3
-          className="font-medium text-sm uppercase text-gray-400 cursor-pointer"
-          onClick={() => setToggle("forgetpassword")}
-        >
-          FORGET PASSWORD
-        </h3>
-      </div>
+      <ToggleMode
+        toogleArray={[
+          { label: "CREATE ACCOUNT", value: "signup" },
+          { label: "FORGET PASSWORD", value: "forgetpassword" },
+        ]}
+        setToggle={setToggle}
+      />
     </div>
   );
 };
