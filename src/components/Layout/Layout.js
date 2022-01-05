@@ -7,7 +7,9 @@ const Layout = ({ children }) => {
       <Header />
       <div className="grid grid-cols-1 overflow-hidden">
         <div className="overflow-y-auto">
-          <div className="px-20 grid grid-cols-1">{children}</div>
+          <div className="px-5 grid grid-cols-1 md:px-5 lg:px-10 xl:px-16 2xl:px-24">
+            {children}
+          </div>
         </div>
       </div>
     </div>

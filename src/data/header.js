@@ -1,7 +1,7 @@
 const navbarData = [
   {
     title: "Liviing Room",
-    to: "#",
+    to: "/product-category/living",
     categories: [
       {
         title: "SOFA COLLECTION",
@@ -37,7 +37,7 @@ const navbarData = [
       },
       {
         title: "OTHERS",
-        to: "/#",
+        to: "#",
         subCategories: [
           { title: "TV UNITS", to: "/product-category/living/others/tv-units" },
           { title: "BEAN BAG", to: "/product-category/living/others/bean-bag" },
@@ -55,7 +55,7 @@ const navbarData = [
   },
   {
     title: "Bed Room",
-    to: "#",
+    to: "/product-category/bed-room",
     categories: [
       {
         title: "BEDROOM FURNITURE",

@@ -6,6 +6,7 @@ import { FallbackLoading } from "./components/Loading";
 import "./App.css";
 import ModLanding from "./modLanding";
 import ModProductList from "./modProduct";
+import ProductDetails from "./modProduct/ProductDetails";
 
 const NotFound = lazy(() => import("./components/NotFound"));
 
@@ -19,8 +20,17 @@ function App() {
             <ModLanding />
           </Route>
 
+          <Route path="/product-category/:category/:subCategory/:superCategory">
+            <ModProductList />
+          </Route>
           <Route path="/product-category/:category/:subCategory">
             <ModProductList />
+          </Route>
+          <Route path="/product-category/:category">
+            <ModProductList />
+          </Route>
+          <Route path="/product/:productId">
+            <ProductDetails />
           </Route>
 
           <Route path="*">

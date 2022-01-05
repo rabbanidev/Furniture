@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  @apply bg-gray-100;
+}
+
 /* layout start */
 .containers {
   @apply w-screen h-screen grid grid-rows-layout grid-cols-1;

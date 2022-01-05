@@ -5,7 +5,7 @@ import SubMenu from "./SubMenu";
 
 const DesktopNavbar = () => {
   return (
-    <nav className="relative px-2 py-2 hidden lg:block">
+    <nav className="relative px-2 py-2">
       <ul className="flex items-center">
         {navbarData.map((item, index) => (
           <div key={index}>

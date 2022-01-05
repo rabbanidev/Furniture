@@ -1,26 +1,29 @@
-/* eslint-disable jsx-a11y/alt-text */
 import React from "react";
+import { useParams } from "react-router-dom";
+import { useGetData } from "../hooks/dataApi";
+import Product from "./Product";
 
 const ProductList = () => {
+  const { category, subCategory, superCategory } = useParams();
+  const {
+    data: list,
+    isLoading,
+    isError,
+    error,
+  } = useGetData("product-list", "/product-list");
+
   return (
-    <div className="grid grid-cols-4 gap-8">
-      {[1, 2, 3, 4].map((product, index) => (
-        <div
-          key={index}
-          className="group transform duration-300 cursor-pointer bg-gray-700 hover:-translate-y-1"
-        >
-          <div className="relative overflow-hidden max-h-96">
-            <img
-              className="absolute"
-              src="https://i.ibb.co/YQSj1Mc/download.png"
-            />
-            <img
-              className="relative transform duration-500 group-hover:opacity-0"
-              src="https://www.royalfurniture.ae/wp-content/uploads/2021/12/1000-X1000-1-35-600x600.jpg"
-            />
-          </div>
-        </div>
-      ))}
+    <div className="pb-16">
+      <div className="my-5">
+        <h1 className="pb-2 font-medium text-4xl uppercase">
+          {superCategory || subCategory || category}
+        </h1>
+      </div>
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+        {list?.data.map((product) => (
+          <Product key={product.id} product={product} />
+        ))}
+      </div>
     </div>
   );
 };

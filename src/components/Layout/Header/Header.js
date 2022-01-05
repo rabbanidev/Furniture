@@ -9,7 +9,9 @@ import User from "./user/User";
 
 const Header = () => {
   const { pathname } = useLocation();
-  const [headerClass, setHeaderClass] = useState("shadow h-20 text-black");
+  const [headerClass, setHeaderClass] = useState(
+    "bg-white shadow h-20 text-black"
+  );
 
   useEffect(() => {
     if (pathname === "/") {
@@ -19,9 +21,9 @@ const Header = () => {
 
   return (
     <div
-      className={`px-20 grid grid-cols-12 items-center w-full z-50 ${headerClass}`}
+      className={`px-3 w-full grid grid-cols-2 items-center z-50 lg:grid-cols-12 md:px-5 lg:px-10 xl:px-16 2xl:px-24 ${headerClass}`}
     >
-      <div className="col-span-2">
+      <div className="lg:col-span-2">
         <Link to="/">
           <img
             src={
@@ -31,10 +33,10 @@ const Header = () => {
           />
         </Link>
       </div>
-      <div className="col-span-4 md:col-span-8">
+      <div className="hidden lg:block lg:col-span-8">
         <DesktopNavbar />
       </div>
-      <div className="col-span-2 flex gap-x-2">
+      <div className="flex justify-end gap-x-2 lg:col-span-2">
         <Search />
         <Cart />
         <User />
@@ -44,3 +46,4 @@ const Header = () => {
 };
 
 export default Header;
+// grid justify-between items-center
