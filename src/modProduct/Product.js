@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Product = ({ product }) => {
-  const { id, name, productImage, oldPrice, newPrice, discount, isNew } =
+  const { id, name, productImages, oldPrice, newPrice, discount, isNew } =
     product;
 
   return (
@@ -10,12 +10,12 @@ const Product = ({ product }) => {
       <div className="h-56 relative overflow-hidden max-h-96">
         <img
           className="w-full h-full absolute"
-          src={productImage[0].url}
+          src={productImages[0].url}
           alt={name}
         />
         <img
           className="w-full h-full relative transform duration-500 group-hover:opacity-0"
-          src={productImage[1].url}
+          src={productImages[1].url}
           alt={name}
         />
       </div>

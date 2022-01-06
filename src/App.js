@@ -6,7 +6,7 @@ import { FallbackLoading } from "./components/Loading";
 import "./App.css";
 import ModLanding from "./modLanding";
 import ModProductList from "./modProduct";
-import ProductDetails from "./modProduct/ProductDetails";
+import ProductDetails from "./modProduct/productDetails/ProductDetails";
 
 const NotFound = lazy(() => import("./components/NotFound"));
 

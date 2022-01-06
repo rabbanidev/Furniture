@@ -5,7 +5,7 @@
       "name": "Cocoa Half Leather Sofa",
       "oldPrice": 15500,
       "newPrice": 6995,
-      "productImage": [
+      "productImages": [
         { "id": 1, "url": "https://i.ibb.co/D9DXxr3/sofa-2.jpg" },
         { "id": 2, "url": "https://i.ibb.co/6XCjFHL/sofa.jpg" }
       ],
@@ -15,7 +15,11 @@
       "outStock": false,
       "title": "For the love of Cocoa!",
       "setincludes": "Set includes : 3 Seater + 2 Seater + 1seater + 1 seater",
-      "shortDes": [],
+      "shortDes": [
+        "Our latest sofa, Cocoa is the perfect half leather sofa for all who love affordable luxury.",
+        "The rich brown color, coupled with the comfortable seating make this sofa everyone’s favorite!",
+        "The sleek legs, give this luxurious sofa a trendy look and feel."
+      ],
       "information": {
         "shipping": "We currently offer free shipping inside UAE on all online orders over AED 700.",
         "sizeing": "Fits true to size. Do you need size advice?",
@@ -30,7 +34,7 @@
       "name": "Ayilla Sofa Set",
       "oldPrice": 15500,
       "newPrice": 6995,
-      "productImage": [
+      "productImages": [
         { "id": 1, "url": "https://i.ibb.co/D9DXxr3/sofa-2.jpg" },
         { "id": 2, "url": "https://i.ibb.co/6XCjFHL/sofa.jpg" }
       ],
@@ -55,7 +59,7 @@
       "name": "Cocoa Half Leather Sofa",
       "oldPrice": 15500,
       "newPrice": 6995,
-      "productImage": [
+      "productImages": [
         { "id": 1, "url": "https://i.ibb.co/D9DXxr3/sofa-2.jpg" },
         { "id": 2, "url": "https://i.ibb.co/6XCjFHL/sofa.jpg" }
       ],
@@ -80,7 +84,7 @@
       "name": "Ayilla Sofa Set",
       "oldPrice": 15500,
       "newPrice": 6995,
-      "productImage": [
+      "productImages": [
         { "id": 1, "url": "https://i.ibb.co/D9DXxr3/sofa-2.jpg" },
         { "id": 2, "url": "https://i.ibb.co/6XCjFHL/sofa.jpg" }
       ],
