@@ -7,7 +7,12 @@
       "newPrice": 6995,
       "productImages": [
         { "id": 1, "url": "https://i.ibb.co/D9DXxr3/sofa-2.jpg" },
-        { "id": 2, "url": "https://i.ibb.co/6XCjFHL/sofa.jpg" }
+        { "id": 2, "url": "https://i.ibb.co/6XCjFHL/sofa.jpg" },
+        { "id": 3, "url": "https://i.ibb.co/2tDVtJX/sofa-1.jpg" },
+        { "id": 4, "url": "https://i.ibb.co/rZRZrQj/sofa-2.jpg" },
+        { "id": 5, "url": "https://i.ibb.co/nBD4tmt/sofa-4.jpg" },
+        { "id": 6, "url": "https://i.ibb.co/0ttLQwn/sofa-5.jpg" },
+        { "id": 7, "url": "https://i.ibb.co/6B397bp/sofa-3.jpg" }
       ],
       "discount": "-10%",
       "isNew": true,
@@ -80,7 +85,7 @@
       "feedback": []
     },
     {
-      "id": "2234234",
+      "id": "abc",
       "name": "Ayilla Sofa Set",
       "oldPrice": 15500,
       "newPrice": 6995,

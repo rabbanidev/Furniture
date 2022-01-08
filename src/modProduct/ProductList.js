@@ -1,5 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import Error from "../components/Error";
+import { HashLoading } from "../components/Loading";
 import { useGetData } from "../hooks/dataApi";
 import Product from "./Product";
 
@@ -11,6 +13,10 @@ const ProductList = () => {
     isError,
     error,
   } = useGetData("product-list", "/product-list");
+
+  if (isLoading) return <HashLoading />;
+
+  if (isError) return <Error message={error.message} />;
 
   return (
     <div className="pb-16">

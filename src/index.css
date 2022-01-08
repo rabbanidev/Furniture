@@ -48,3 +48,17 @@ body {
 .btn-primary {
   @apply py-2 px-4 text-gray-800 font-medium border border-gray-300 inline-flex items-center hover:bg-gray-800 hover:text-white;
 }
+
+/* List / Table style */
+.list-wrapper {
+  @apply grid grid-cols-1 space-y-1;
+}
+.list-header {
+  @apply hidden gap-x-1 bg-aliceblue text-gray-900 px-3 py-5;
+}
+.list-body {
+  @apply p-3  gap-1 odd:bg-gray-100 even:bg-gray-200 hover:bg-gray-400 hover:text-white;
+}
+.list-footer {
+  @apply md:grid grid-cols-11 bg-gray-300 text-primary rounded-b-md p-3 mt-2;
+}

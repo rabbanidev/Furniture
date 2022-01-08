@@ -9,6 +9,9 @@ module.exports = {
       gridTemplateColumns: {
         layout: "2fr 9fr",
       },
+      height: {
+        100: "450px",
+      },
       width: {
         navmenu: "36rem",
       },
@@ -22,6 +25,7 @@ module.exports = {
         light: "#f4f4fd",
         linkcolor: "rgba(255, 255, 255, 0.4)",
         dark: "#25233C",
+        aliceblue: "#F9FAFB",
         backdrop: "rgba(0,0,0,.5)",
       },
       fontFamily: {

@@ -15,7 +15,7 @@ const Header = () => {
 
   useEffect(() => {
     if (pathname === "/") {
-      setHeaderClass("text-white");
+      setHeaderClass("bg-white text-black");
     }
   }, [pathname]);
 

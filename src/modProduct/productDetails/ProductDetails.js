@@ -52,6 +52,7 @@ const ProductDetails = () => {
       <div className="pb-16 mt-5 grid grid-cols-1 gap-8 text-gray-900 lg:grid-cols-2">
         <Image productImages={productImages} />
         <Details
+          productId={productId}
           name={name}
           oldPrice={oldPrice}
           newPrice={newPrice}

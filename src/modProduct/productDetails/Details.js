@@ -1,8 +1,10 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { FaRegCheckCircle, FaRegCircle } from "react-icons/fa";
+import { useGlobalContext } from "../../hooks/context";
 
 const Details = ({
+  productId,
   name,
   oldPrice,
   newPrice,
@@ -13,10 +15,18 @@ const Details = ({
   inStock,
   outStock,
 }) => {
+  const value = useGlobalContext();
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    const currentProduct = {
+      productId,
+      name,
+      oldPrice,
+      newPrice,
+      quantity: +data.quantity,
+    };
+    value.addToCart(currentProduct);
   };
 
   return (
@@ -58,8 +68,8 @@ const Details = ({
           <input
             type="number"
             name="quantity"
-            min={0}
-            defaultValue={0}
+            min={1}
+            defaultValue={1}
             className="px-2 py-1 w-12 outline-none border-0"
             required={true}
             {...register("quantity")}

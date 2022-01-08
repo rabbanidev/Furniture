@@ -1,9 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useGlobalContext } from "../hooks/context";
 
 const Product = ({ product }) => {
+  const value = useGlobalContext();
   const { id, name, productImages, oldPrice, newPrice, discount, isNew } =
     product;
+
+  const cartHandler = () => {
+    const currentProduct = {
+      productId: product.id,
+      name,
+      oldPrice,
+      newPrice,
+      quantity: 1,
+    };
+    value.addToCart(currentProduct);
+  };
 
   return (
     <div className="w-full h-96 bg-white group transform duration-300 hover:-translate-x-1">
@@ -36,7 +49,10 @@ const Product = ({ product }) => {
           </div>
         </div>
         <div className="">
-          <button className="py-1.5 px-2 text-gray-800 text-xs border border-gray-300 hover:bg-gray-800 hover:text-white">
+          <button
+            className="py-1.5 px-2 text-gray-800 text-xs border border-gray-300 hover:bg-gray-800 hover:text-white"
+            onClick={cartHandler}
+          >
             ADD TO CART
           </button>
         </div>
