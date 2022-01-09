@@ -9,9 +9,9 @@ const Input = ({ name, type, placeholder, register, errorMessage = "" }) => {
           name?.message ? "input-border-danger" : "input-border-primary"
         }`}
         placeholder={placeholder}
-        // {...register(name)}
+        {...register(name)}
       />
-      <p className="text-red-400 text-sm">{errorMessage}</p>
+      <p className="text-red-400 text-sm capitalize">{errorMessage}</p>
     </div>
   );
 };

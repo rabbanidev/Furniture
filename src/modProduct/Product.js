@@ -13,6 +13,7 @@ const Product = ({ product }) => {
       name,
       oldPrice,
       newPrice,
+      image: productImages[0].url,
       quantity: 1,
     };
     value.addToCart(currentProduct);

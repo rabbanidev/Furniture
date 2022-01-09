@@ -1,5 +1,5 @@
 import { Route, Redirect } from "react-router-dom";
-import { useGlobalContext } from "../../hooks/context";
+import { useGlobalContext } from "../hooks/context";
 
 export default function PrivateRoute({ children, ...rest }) {
   const value = useGlobalContext();

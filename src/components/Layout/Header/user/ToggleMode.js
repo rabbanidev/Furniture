@@ -12,18 +12,6 @@ const ToggleMode = ({ toogleArray, setToggle }) => {
           {toggle.label}
         </h3>
       ))}
-      {/* <h3
-        className="font-medium text-sm uppercase text-gray-400 cursor-pointer"
-        onClick={() => setToggle("signin")}
-      >
-        LOGIN
-      </h3>
-      <h3
-        className="font-medium text-sm uppercase text-gray-400 cursor-pointer"
-        onClick={() => setToggle("signup")}
-      >
-        CREATE ACCOUNT
-      </h3> */}
     </div>
   );
 };

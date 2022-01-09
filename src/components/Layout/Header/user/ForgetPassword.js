@@ -30,13 +30,15 @@ const ForgetPassword = ({ setToggle }) => {
           />
         </div>
       </form>
-      <ToggleMode
-        toogleArray={[
-          { label: "LOGIN", value: "signin" },
-          { label: "CREATE ACCOUNT", value: "signup" },
-        ]}
-        setToggle={setToggle}
-      />
+      {setToggle && (
+        <ToggleMode
+          toogleArray={[
+            { label: "LOGIN", value: "signin" },
+            { label: "CREATE ACCOUNT", value: "signup" },
+          ]}
+          setToggle={setToggle}
+        />
+      )}
     </div>
   );
 };

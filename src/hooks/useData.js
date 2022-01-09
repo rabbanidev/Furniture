@@ -22,6 +22,23 @@ const useData = () => {
     }
   };
 
+  const quantityIncreaseOrDecrease = (productId, quantity) => {
+    const newCartItems = cartItems.map((cartItem) => {
+      if (cartItem.productId === productId) {
+        cartItem.quantity = quantity;
+      }
+      return cartItem;
+    });
+    setCartItems(newCartItems);
+  };
+
+  const deleteCartItem = (productId) => {
+    const newCartItems = cartItems.filter(
+      (item) => item.productId !== productId
+    );
+    setCartItems(newCartItems);
+  };
+
   const signOut = () => {
     setUser(null);
   };
@@ -32,6 +49,8 @@ const useData = () => {
     cartItems,
     setCartItems,
     addToCart,
+    quantityIncreaseOrDecrease,
+    deleteCartItem,
     signOut,
   };
 };

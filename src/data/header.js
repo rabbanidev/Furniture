@@ -1,3 +1,5 @@
+import { FiDatabase, FiHeart, FiSmile, FiStar } from "react-icons/fi";
+
 const navbarData = [
   {
     title: "Liviing Room",
@@ -101,4 +103,27 @@ const navbarData = [
   },
 ];
 
-export { navbarData };
+const userData = [
+  {
+    label: "Manage My Account",
+    to: "/user/my-account",
+    Icon: FiSmile,
+  },
+  {
+    label: "My Orders",
+    to: "/user/my-orders",
+    Icon: FiDatabase,
+  },
+  {
+    label: "My Reviews",
+    to: "/user/my-reviews",
+    Icon: FiStar,
+  },
+  {
+    label: "My Whitelist",
+    to: "/my-whitelist",
+    Icon: FiHeart,
+  },
+];
+
+export { navbarData, userData };

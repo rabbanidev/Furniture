@@ -62,6 +62,7 @@ const ProductDetails = () => {
           shortDes={shortDes}
           inStock={inStock}
           outStock={outStock}
+          image={productImages[0].url}
         />
         <Description description={description} />
         <Information information={information} />

@@ -14,6 +14,7 @@ const Details = ({
   shortDes,
   inStock,
   outStock,
+  image,
 }) => {
   const value = useGlobalContext();
   const { register, handleSubmit } = useForm();
@@ -24,6 +25,7 @@ const Details = ({
       name,
       oldPrice,
       newPrice,
+      image,
       quantity: +data.quantity,
     };
     value.addToCart(currentProduct);

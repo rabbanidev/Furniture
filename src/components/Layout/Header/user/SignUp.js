@@ -38,13 +38,15 @@ const SignUp = ({ setToggle }) => {
           />
         </div>
       </form>
-      <ToggleMode
-        toogleArray={[
-          { label: "LOGIN", value: "signin" },
-          { label: "FORGET PASSWORD", value: "forgetpassword" },
-        ]}
-        setToggle={setToggle}
-      />
+      {setToggle && (
+        <ToggleMode
+          toogleArray={[
+            { label: "LOGIN", value: "signin" },
+            { label: "FORGET PASSWORD", value: "forgetpassword" },
+          ]}
+          setToggle={setToggle}
+        />
+      )}
     </div>
   );
 };

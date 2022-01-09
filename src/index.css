@@ -44,9 +44,15 @@ body {
   @apply px-0 py-16 w-0 h-0 absolute mt-1 -left-5 rounded-md hidden group-hover:block group-hover:w-navmenu group-hover:h-72 group-hover:bg-white;
 }
 
+.user-dropdown {
+  @apply py-5 w-0 h-0 absolute mt-1 right-0 rounded-md hidden shadow cursor-default group-hover:block group-hover:w-60 group-hover:h-52 group-hover:bg-white;
+}
 /* Button CSS */
 .btn-primary {
   @apply py-2 px-4 text-gray-800 font-medium border border-gray-300 inline-flex items-center hover:bg-gray-800 hover:text-white;
+}
+.btn-secondary {
+  @apply py-3 px-8 font-medium border border-gray-300 inline-flex items-center justify-center bg-gray-800 text-white hover:bg-white hover:text-gray-800;
 }
 
 /* List / Table style */
