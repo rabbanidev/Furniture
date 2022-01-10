@@ -21,7 +21,7 @@ body {
 
 /* Form Css */
 .form-col {
-  @apply grid grid-cols-1 gap-8;
+  @apply grid grid-cols-1 gap-5;
 }
 .form-row {
   @apply grid grid-cols-1;

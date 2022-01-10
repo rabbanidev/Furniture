@@ -1,12 +1,28 @@
 import React from "react";
 
-const Input = ({ name, type, placeholder, register, errorMessage = "" }) => {
+const Input = ({
+  name,
+  type,
+  placeholder,
+  label,
+  register,
+  errorMessage = "",
+}) => {
   return (
     <div className="form-row">
+      {label && (
+        <label
+          className={`pb-0.5 font-medium text-xs uppercase ${
+            errorMessage ? "text-red-400" : "text-gray-600"
+          }`}
+        >
+          {label}
+        </label>
+      )}
       <input
         type={type}
         className={`form-control ${
-          name?.message ? "input-border-danger" : "input-border-primary"
+          errorMessage ? "input-border-danger" : "input-border-primary"
         }`}
         placeholder={placeholder}
         {...register(name)}

@@ -1,10 +1,12 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 import { FaSignInAlt } from "react-icons/fa";
 import PrimaryButton from "../../../button/PrimaryButton";
 import Input from "../../../Input";
 import ToggleMode from "./ToggleMode";
 
 const ForgetPassword = ({ setToggle }) => {
+  const { register } = useForm();
   return (
     <div>
       <h3 className="font-medium text-md uppercase text-gray-800">
@@ -20,7 +22,7 @@ const ForgetPassword = ({ setToggle }) => {
             name="email"
             type="email"
             placeholder="Email address*"
-            register=""
+            register={register}
           />
           <PrimaryButton
             btnText="FORGET PASSWORD"

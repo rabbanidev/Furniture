@@ -1,10 +1,13 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 import { FaSignInAlt } from "react-icons/fa";
 import PrimaryButton from "../../../button/PrimaryButton";
 import Input from "../../../Input";
 import ToggleMode from "./ToggleMode";
 
 const SignUp = ({ setToggle }) => {
+  const { register } = useForm();
+
   return (
     <div>
       <h3 className="font-medium text-md uppercase text-gray-800">
@@ -16,19 +19,19 @@ const SignUp = ({ setToggle }) => {
             name="fullName"
             type="text"
             placeholder="Full Name **"
-            register=""
+            register={register}
           />
           <Input
             name="email"
             type="email"
             placeholder="Email address*"
-            register=""
+            register={register}
           />
           <Input
             name="password"
             type="password"
             placeholder="Password*"
-            register=""
+            register={register}
           />
           <PrimaryButton
             btnText="SIGN UP"

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../hooks/context";
+import { subTotal } from "../calculate";
 
 const Cart = () => {
   const value = useGlobalContext();
@@ -58,7 +59,7 @@ const Cart = () => {
             </div>
             <div className="py-5 flex justify-between md:col-span-2">
               <span className="inline-block md:hidden mb-3 break-words text-sm">
-                PRICE:
+                PRICE
               </span>
               <div>
                 <span className="break-words text-md text-red-500 line-through block">
@@ -71,7 +72,7 @@ const Cart = () => {
             </div>
             <div className="py-5 flex justify-between md:col-span-1">
               <span className="inline-block md:hidden mb-3 break-words text-sm">
-                QUANTITY:
+                QUANTITY
               </span>
               <div className="flex justify-between items-center border w-20 h-10 rounded">
                 <button
@@ -102,11 +103,11 @@ const Cart = () => {
             </div>
             <div className="py-5 flex justify-between md:col-span-1">
               <span className="inline-block md:hidden mb-3 break-words text-sm">
-                SUB TOTAL:
+                SUB TOTAL
               </span>
-              <div>
-                <span className="-mt-2 break-words text-md block md:mt-0">
-                  {cartItem.quantity * cartItem.newPrice}
+              <div className="mt-2">
+                <span className="break-words text-md block md:mt-0">
+                  AED {subTotal(cartItem.newPrice, cartItem.quantity)}
                 </span>
               </div>
             </div>
