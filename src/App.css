@@ -14,14 +14,14 @@
 
 /* Slider Css start */
 .slider-wrapper {
-  width: 100vw;
-  height: 90vh;
-  position: absolute;
+  width: 90vw;
+  height: 60vh;
+  position: relative;
   top: 0;
   left: 0;
   right: 0;
   overflow-x: hidden;
-  margin: 0 auto;
+  margin: 20px auto 0 auto;
 }
 
 .slide {

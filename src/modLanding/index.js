@@ -6,7 +6,7 @@ import ProductCategory from "./ProductCategory";
 const ModLanding = () => {
   return (
     <Layout>
-      {/* <Banner /> */}
+      <Banner />
       <ProductCategory />
     </Layout>
   );
