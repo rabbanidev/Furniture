@@ -10,7 +10,8 @@ import ProductDetails from "./modProduct/productDetails/ProductDetails";
 import ModCartList from "./modCart";
 import ModCheckout from "./modCheckout";
 
-import * as ModAuthnication from "./modAuthnication/index";
+import * as ModAuthnication from "./modAuthnication";
+import * as ModAdmin from "./modAdmin";
 import PrivateRoute from "./modAuthnication/ProtectedRoute";
 const NotFound = lazy(() => import("./components/NotFound"));
 
@@ -52,6 +53,20 @@ function App() {
 
           <PrivateRoute path="/checkout">
             <ModCheckout />
+          </PrivateRoute>
+
+          {/* Admin Route */}
+          <PrivateRoute path="/admin/dashboard">
+            <ModAdmin.Dashboard />
+          </PrivateRoute>
+          <PrivateRoute path="/admin/product-list">
+            <ModAdmin.ProductList />
+          </PrivateRoute>
+          <PrivateRoute path="/admin/order-list">
+            <ModAdmin.OrderList />
+          </PrivateRoute>
+          <PrivateRoute path="/admin/user-list">
+            <ModAdmin.UserList />
           </PrivateRoute>
 
           <Route path="*">

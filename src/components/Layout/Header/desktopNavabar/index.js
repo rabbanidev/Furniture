@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { navbarData } from "../../../data/header";
+import { navbarData } from "../../../../data/header";
 import SubMenu from "./SubMenu";
 
 const DesktopNavbar = () => {

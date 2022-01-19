@@ -43,7 +43,9 @@ body {
 .sub-nav {
   @apply px-0 py-16 w-0 h-0 absolute mt-1 -left-5 rounded-md hidden group-hover:block group-hover:w-navmenu group-hover:h-72 group-hover:bg-white;
 }
-
+.sidebar-menu-item {
+  @apply flex items-center w-56 h-10 px-3 mt-1 rounded hover:bg-darker hover:text-gray-300;
+}
 .user-dropdown {
   @apply py-5 w-0 h-0 absolute mt-1 right-0 rounded-md hidden shadow cursor-default group-hover:block group-hover:w-60 group-hover:h-52 group-hover:bg-white;
 }
