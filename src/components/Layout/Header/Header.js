@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useGetData } from "../../../hooks/dataApi";
 import MobileSidebar from "../sidebar/MobileSidebar";
 import Cart from "./cart/Cart";
 import DesktopNavbar from "./desktopNavabar";
@@ -8,6 +9,8 @@ import Search from "./search/Search";
 import User from "./user/User";
 
 const Header = () => {
+  const { data: list } = useGetData("userInfo", "/userinfo");
+
   return (
     <div
       className={`px-3 bg-white w-full grid grid-cols-2 items-center shadow-sm z-40 lg:grid-cols-12 md:px-5 lg:px-10 xl:px-16 2xl:px-24`}
@@ -28,10 +31,17 @@ const Header = () => {
           <MobileSidebar />
           <MobileNavbar />
         </div>
+        {list?.data.role === process.env.REACT_APP_ROLE && (
+          <Link
+            to="/admin/dashboard"
+            className="font-semibold mt-1 hover:underline"
+          >
+            Admin
+          </Link>
+        )}
       </div>
     </div>
   );
 };
 
 export default Header;
-// grid justify-between items-center

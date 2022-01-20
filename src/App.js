@@ -59,12 +59,18 @@ function App() {
           <PrivateRoute path="/admin/dashboard">
             <ModAdmin.Dashboard />
           </PrivateRoute>
-          <PrivateRoute path="/admin/product-list">
+
+          <PrivateRoute exact path="/admin/product-list">
             <ModAdmin.ProductList />
           </PrivateRoute>
+          <PrivateRoute path="/admin/product-list/add">
+            <ModAdmin.ProductAdd />
+          </PrivateRoute>
+
           <PrivateRoute path="/admin/order-list">
             <ModAdmin.OrderList />
           </PrivateRoute>
+
           <PrivateRoute path="/admin/user-list">
             <ModAdmin.UserList />
           </PrivateRoute>

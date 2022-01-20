@@ -1,9 +1,9 @@
 import React from "react";
 
-const SaveButton = ({ btnText, disabled }) => {
+const SaveButton = ({ btnText, disabled, isRow = true }) => {
   return (
-    <div className="form-row">
-      <button type="submit" className="btn-primary" disabled={disabled}>
+    <div className={isRow ? "form-row w-full" : "md:mt-6"}>
+      <button type="submit" className="btn-orange" disabled={disabled}>
         {btnText}
       </button>
     </div>

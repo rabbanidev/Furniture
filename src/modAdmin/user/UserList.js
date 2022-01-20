@@ -2,7 +2,7 @@ import React from "react";
 import AdminLayout from "../../components/layout/AdminLayout";
 
 const UserList = () => {
-  return <AdminLayout>User List</AdminLayout>;
+  return <AdminLayout>Users</AdminLayout>;
 };
 
 export default UserList;

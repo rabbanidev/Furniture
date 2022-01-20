@@ -6,7 +6,7 @@ const EditButton = ({ path }) => {
   const history = useHistory();
   return (
     <button className="btn-edit" onClick={() => history.push(path)}>
-      <FiEdit />
+      <FiEdit size={16} />
     </button>
   );
 };

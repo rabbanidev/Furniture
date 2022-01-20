@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -8,21 +8,25 @@ import Input from "../../../Input";
 import ToggleMode from "./ToggleMode";
 import { useHistory, useLocation } from "react-router-dom";
 import { useGlobalContext } from "../../../../hooks/context";
+import { usePostData } from "../../../../hooks/dataApi";
+import toast from "react-hot-toast";
 
 const schema = yup.object().shape({
   email: yup
     .string()
     .email("Please enter a valid email address.")
     .required("Email is required"),
-  password: yup.string().required("Password is required").min(6).max(12),
+  password: yup.string().required("Password is required").min(8).max(16),
 });
 
 const SignIn = ({ setToggle }) => {
   const history = useHistory();
   const location = useLocation();
   const value = useGlobalContext();
+  const { mutateAsync } = usePostData();
+  const [submitting, setSubmitting] = useState(false);
 
-  let { from } = location.state || { from: { pathname: "/user/profile" } };
+  let { from } = location.state || { from: { pathname: "/user/dashboard" } };
 
   const {
     register,
@@ -30,16 +34,35 @@ const SignIn = ({ setToggle }) => {
     reset,
     formState: { errors },
   } = useForm({
-    defaultValues: { email: "abc@gmail.com", password: "12045678" },
+    defaultValues: { email: "admin@gmail.com", password: "12345678" },
     resolver: yupResolver(schema),
   });
 
   const { email, password } = errors;
 
-  const onSubmit = (data) => {
-    value.setUser("accessToken");
-    history.push(from);
-    reset();
+  const onSubmit = async (formData) => {
+    setSubmitting(true);
+    try {
+      const { status, data } = await mutateAsync({
+        path: "/auth/signin",
+        formData: formData,
+      });
+      if (status === 200) {
+        reset();
+        value.setUser(data.token);
+        history.push(from);
+      }
+    } catch (error) {
+      if (error.response) {
+        toast.error("Response : " + error.response.data.message);
+      } else if (error.request) {
+        toast.error("Request : " + error.message);
+      } else {
+        toast.error("Error :", error.message);
+      }
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
