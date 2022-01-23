@@ -9,19 +9,20 @@ const ProductAdd = () => {
     type: "",
     oldPrice: 0,
     newPrice: 0,
-    inStock: Boolean,
-    outStock: Boolean,
+    inStock: false,
     title: "",
     setincludes: "",
+    shortDes: [],
     information: {
       shipping: "",
       sizeing: "",
       assistance: "",
       storeMail: "",
     },
-    shortDes: [],
     description: "",
+    files: null,
   };
+
   return (
     <AdminLayout>
       <div className="card w-full max-w-screen-xl">
@@ -33,8 +34,8 @@ const ProductAdd = () => {
         <ProductForm
           defaultValues={defaultValues}
           action={() => {}}
-          btnText="সেভ"
-          path="/product"
+          btnText="Save"
+          path="/product/add"
           returnPath="/admin/product-list"
         />
       </div>

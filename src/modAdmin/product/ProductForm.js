@@ -1,10 +1,38 @@
 import React, { useState } from "react";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import SaveButton from "../../components/button/SaveButton";
 import Input from "../../components/Input";
+import { usePostData } from "../../hooks/dataApi";
+import toast from "react-hot-toast";
+import { useHistory } from "react-router-dom";
+
+const schema = yup
+  .object({
+    name: yup.string().required("Product Name is required"),
+    type: yup.string().required("Product Type is required"),
+    newPrice: yup
+      .number()
+      .min(0, "Must be greater than or equal to 0")
+      .typeError("Product new price is required"),
+    oldPrice: yup
+      .number()
+      .min(0, "Must be greater than or equal to 0")
+      .typeError("Product old price is required"),
+    title: yup.string().required("Product Title is required"),
+    shipping: yup.string().required("Product shipping is required"),
+  })
+  .shape({
+    files: yup.mixed().test("fileSize", "Images is required.", (value) => {
+      return value && value[0];
+    }),
+  });
 
 const ProductForm = ({ defaultValues, action, btnText, path, returnPath }) => {
+  const history = useHistory();
   const [submitting, setSubmitting] = useState(false);
+  const { mutateAsync } = usePostData();
   const {
     register,
     handleSubmit,
@@ -12,64 +40,96 @@ const ProductForm = ({ defaultValues, action, btnText, path, returnPath }) => {
     formState: { errors },
   } = useForm({
     defaultValues: defaultValues,
-    // resolver: yupResolver(TenantSchema),
+    resolver: yupResolver(schema),
   });
 
-  const {
-    name,
-    type,
-    oldPrice,
-    newPrice,
-    inStock,
-    outStock,
-    title,
-    setincludes,
-    informationShipping,
-    informationSizeing,
-    informationAssistance,
-    informationStoreMail,
-    description,
-    shortDesOne,
-    shortDesTwo,
-    shortDesThree,
-    image,
-  } = errors;
+  const { name, type, newPrice, oldPrice, title, shipping, files } = errors;
 
-  const onSubmit = async (formData) => {
-    console.log("formData", formData);
+  const onSubmit = async (data) => {
+    let formData = new FormData();
+    formData.append("name", data.name);
+    formData.append("type", data.type);
+    formData.append("newPrice", data.newPrice);
+    formData.append("oldPrice", data.oldPrice);
+    formData.append("inStock", Boolean(data.inStock));
+    formData.append("title", data.title);
+    formData.append("setincludes", data.setincludes);
+    formData.append("shortDes", [
+      data.shortDesOne,
+      data.shortDesTwo,
+      data.shortDesThree,
+    ]);
+    formData.append("information", {
+      shipping: data.shipping,
+      sizeing: data.sizeing,
+      assistance: data.assistance,
+      storeMail: data.storeMail,
+    });
+    formData.append("description", data.description);
+
+    if (data.files.length > 0) {
+      for (let i = 0; i < data.files.length; i++) {
+        formData.append("images", data.files[i]);
+      }
+    }
+
+    try {
+      const { status, data } = await mutateAsync({
+        path: path,
+        formData: formData,
+      });
+      if (status === 201) {
+        toast.success(data.message);
+        reset();
+      }
+      if (status === 204) {
+        toast.success("Update successful!");
+        history.push(returnPath);
+      }
+    } catch (error) {
+      if (error.response) {
+        toast.error("Response : " + error.response.data.message);
+      } else if (error.request) {
+        toast.error("Request : " + error.message);
+      } else {
+        toast.error("Error :", error.message);
+      }
+    } finally {
+      action();
+      setSubmitting(false);
+    }
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <input type="hidden" {...register("tenantId")} />
       <div className="form-col">
         <Input
           name="name"
           type="text"
           label="Name"
           register={register}
-          // errorMessage={name?.message}
+          errorMessage={name?.message}
         />
         <Input
           name="type"
           type="text"
           label="Type"
           register={register}
-          //   errorMessage={type?.message}
+          errorMessage={type?.message}
         />
         <Input
           name="oldPrice"
           type="text"
           label="Old Price"
           register={register}
-          //   errorMessage={oldPrice?.message}
+          errorMessage={oldPrice?.message}
         />
         <Input
           name="newPrice"
           type="text"
           label="New Price"
           register={register}
-          //   errorMessage={newPrice?.message}
+          errorMessage={newPrice?.message}
         />
         <div className="flex items-center gap-x-3">
           <label htmlFor="inStock">In Stock</label>
@@ -77,16 +137,7 @@ const ProductForm = ({ defaultValues, action, btnText, path, returnPath }) => {
             id="inStock"
             name="inStock"
             type="checkbox"
-            register={"register"}
-          />
-        </div>
-        <div className="flex items-center gap-x-3">
-          <label htmlFor="outStock">Out Stock</label>
-          <input
-            id="outStock"
-            name="outStock"
-            type="checkbox"
-            register={"register"}
+            {...register("inStock")}
           />
         </div>
         <Input
@@ -94,80 +145,74 @@ const ProductForm = ({ defaultValues, action, btnText, path, returnPath }) => {
           type="text"
           label="Title"
           register={register}
-          //   errorMessage={title?.message}
+          errorMessage={title?.message}
         />
         <Input
           name="setincludes"
           type="text"
           label="Set Includes"
           register={register}
-          //   errorMessage={setincludes?.message}
         />
         <Input
-          name="informationShipping"
+          name="shipping"
           type="text"
-          label="Information Shipping"
+          label="Shipping"
           register={register}
-          //   errorMessage={informationShipping]?.message}
-        />
-
-        <Input
-          name="informationSizeing"
-          type="text"
-          label="Information Sizeing"
-          register={register}
-          //   errorMessage={informationSizeing?.message}
+          errorMessage={shipping?.message}
+          defaultValue={defaultValues.information.shipping}
         />
         <Input
-          name="informationAssistance"
+          name="sizeing"
           type="text"
-          label="information Assistance"
+          label="Sizeing"
           register={register}
-          //   errorMessage={informationAssistance?.message}
+          defaultValue={defaultValues.information.sizeing}
         />
         <Input
-          name="informationStoreMail"
+          name="assistance"
           type="text"
-          label="Information Store Mail"
+          label="Assistance"
           register={register}
-          //   errorMessage={informationStoreMail?.message}
+          defaultValue={defaultValues.information.assistance}
+        />
+        <Input
+          name="storeMail"
+          type="text"
+          label="Store Mail"
+          register={register}
+          defaultValue={defaultValues.information.storeMail}
         />
         <Input
           name="description"
           type="text"
           label="Description"
           register={register}
-          //   errorMessage={description?.message}
         />
         <Input
           name="shortDesOne"
           type="text"
           label="Short Description"
           register={register}
-          //   errorMessage={shortDes1?.message}
+          defaultValue={defaultValues.shortDes[0]}
         />
         <Input
           name="shortDesTwo"
           type="text"
           label="Short Description"
           register={register}
-          //   errorMessage={shortDesTwo?.message}
+          defaultValue={defaultValues.shortDes[1]}
         />
         <Input
           name="shortDesThree"
           type="text"
           label="Short Description"
           register={register}
-          //   errorMessage={shortDesThree?.message}
+          defaultValue={defaultValues.shortDes[2]}
         />
-        <input
-          name="images"
-          type="file"
-          label="Images"
-          register={register}
-          //   errorMessage={images?.message}
-        />
-
+        <div>
+          <input {...register("files")} type="file" name="files" multiple />
+          <p className="text-red-400 text-sm capitalize">{files?.message}</p>
+        </div>
         <SaveButton btnText={btnText} disabled={submitting} />
       </div>
     </form>

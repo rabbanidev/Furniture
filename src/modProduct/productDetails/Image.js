@@ -13,11 +13,11 @@ const settings = {
   slidesToScroll: 1,
 };
 
-const Image = ({ productImages }) => {
+const Image = ({ images }) => {
   return (
     <div className="px-2 lg:px-0">
       <Slider {...settings}>
-        {productImages.map((productImage) => (
+        {images.map((productImage) => (
           <Zoom key={productImage.id} src={productImage.url} zoomScale={10} />
         ))}
       </Slider>

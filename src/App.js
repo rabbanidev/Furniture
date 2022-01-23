@@ -66,6 +66,9 @@ function App() {
           <PrivateRoute path="/admin/product-list/add">
             <ModAdmin.ProductAdd />
           </PrivateRoute>
+          <PrivateRoute path="/admin/product-list/edit/:id">
+            <ModAdmin.ProductEdit />
+          </PrivateRoute>
 
           <PrivateRoute path="/admin/order-list">
             <ModAdmin.OrderList />

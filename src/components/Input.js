@@ -6,7 +6,8 @@ const Input = ({
   placeholder,
   label,
   register,
-  errorMessage = "",
+  errorMessage,
+  defaultValue,
 }) => {
   return (
     <div className="form-row">
@@ -20,6 +21,7 @@ const Input = ({
         </label>
       )}
       <input
+        defaultValue={defaultValue}
         type={type}
         className={`form-control ${
           errorMessage ? "input-border-danger" : "input-border-primary"

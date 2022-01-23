@@ -5,7 +5,7 @@
       "name": "Cocoa Half Leather Sofa",
       "oldPrice": 15500,
       "newPrice": 6995,
-      "productImages": [
+      "images": [
         { "id": 1, "url": "https://i.ibb.co/D9DXxr3/sofa-2.jpg" },
         { "id": 2, "url": "https://i.ibb.co/6XCjFHL/sofa.jpg" },
         { "id": 3, "url": "https://i.ibb.co/2tDVtJX/sofa-1.jpg" },
@@ -39,7 +39,7 @@
       "name": "Ayilla Sofa Set",
       "oldPrice": 15500,
       "newPrice": 6995,
-      "productImages": [
+      "images": [
         { "id": 1, "url": "https://i.ibb.co/D9DXxr3/sofa-2.jpg" },
         { "id": 2, "url": "https://i.ibb.co/6XCjFHL/sofa.jpg" }
       ],
@@ -64,7 +64,7 @@
       "name": "Cocoa Half Leather Sofa",
       "oldPrice": 15500,
       "newPrice": 6995,
-      "productImages": [
+      "images": [
         { "id": 1, "url": "https://i.ibb.co/D9DXxr3/sofa-2.jpg" },
         { "id": 2, "url": "https://i.ibb.co/6XCjFHL/sofa.jpg" }
       ],
@@ -89,7 +89,7 @@
       "name": "Ayilla Sofa Set",
       "oldPrice": 15500,
       "newPrice": 6995,
-      "productImages": [
+      "images": [
         { "id": 1, "url": "https://i.ibb.co/D9DXxr3/sofa-2.jpg" },
         { "id": 2, "url": "https://i.ibb.co/6XCjFHL/sofa.jpg" }
       ],

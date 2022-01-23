@@ -16,22 +16,7 @@ const ProductDetails = () => {
     isLoading,
     isError,
     error,
-  } = useGetData("product-list", `/product-list/${productId}`);
-
-  const {
-    title,
-    shortDes,
-    setincludes,
-    productImages,
-    outStock,
-    oldPrice,
-    newPrice,
-    name,
-    information,
-    inStock,
-    discount,
-    description,
-  } = list?.data || {};
+  } = useGetData("product", `/product/${productId}`);
 
   if (isLoading)
     return (
@@ -47,10 +32,25 @@ const ProductDetails = () => {
       </Layout>
     );
 
+  const {
+    title,
+    shortDes,
+    setincludes,
+    images,
+    outStock,
+    oldPrice,
+    newPrice,
+    name,
+    information,
+    inStock,
+    discount,
+    description,
+  } = list.data;
+
   return (
     <Layout>
       <div className="pb-16 mt-5 grid grid-cols-1 gap-8 text-gray-900 lg:grid-cols-2">
-        <Image productImages={productImages} />
+        <Image images={images} />
         <Details
           productId={productId}
           name={name}
@@ -62,7 +62,7 @@ const ProductDetails = () => {
           shortDes={shortDes}
           inStock={inStock}
           outStock={outStock}
-          image={productImages[0].url}
+          image={images[0].url}
         />
         <Description description={description} />
         <Information information={information} />

@@ -4,8 +4,7 @@ import { useGlobalContext } from "../hooks/context";
 
 const Product = ({ product }) => {
   const value = useGlobalContext();
-  const { id, name, productImages, oldPrice, newPrice, discount, isNew } =
-    product;
+  const { id, name, images, oldPrice, newPrice, discount, isNew } = product;
 
   const cartHandler = () => {
     const currentProduct = {
@@ -13,7 +12,7 @@ const Product = ({ product }) => {
       name,
       oldPrice,
       newPrice,
-      image: productImages[0].url,
+      image: images[0].url,
       quantity: 1,
     };
     value.addToCart(currentProduct);
@@ -24,12 +23,12 @@ const Product = ({ product }) => {
       <div className="h-56 relative overflow-hidden max-h-96">
         <img
           className="w-full h-full absolute"
-          src={productImages[0].url}
+          src={images[0].url}
           alt={name}
         />
         <img
           className="w-full h-full relative transform duration-500 group-hover:opacity-0"
-          src={productImages[1].url}
+          src={images[1].url}
           alt={name}
         />
       </div>
