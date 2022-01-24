@@ -5,7 +5,17 @@ const ProductAdd = lazy(() => import("./product/ProductAdd"));
 const ProductEdit = lazy(() => import("./product/ProductEdit"));
 
 const OrderList = lazy(() => import("./order/OrderList"));
+const OrderEdit = lazy(() => import("./order/OrderEdit"));
+
 const UserList = lazy(() => import("./user/UserList"));
 const Dashboard = lazy(() => import("./dashboard/Dashboard"));
 
-export { ProductList, ProductAdd, ProductEdit, OrderList, UserList, Dashboard };
+export {
+  ProductList,
+  ProductAdd,
+  ProductEdit,
+  OrderList,
+  OrderEdit,
+  UserList,
+  Dashboard,
+};

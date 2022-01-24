@@ -19,7 +19,7 @@ const Product = ({ product }) => {
   };
 
   return (
-    <div className="w-full h-96 bg-white group transform duration-300 hover:-translate-x-1">
+    <div className="w-full h-96 bg-white group transform duration-300 overflow-hidden hover:-translate-x-1">
       <div className="h-56 relative overflow-hidden max-h-96">
         <img
           className="w-full h-full absolute"
@@ -35,7 +35,7 @@ const Product = ({ product }) => {
       <div className="px-3 py-5 text-gray-900 border-t group-hover:border-gray-300">
         <Link
           to={`/product/${id}`}
-          className="text-xl font-normal uppercase block"
+          className="text-xl font-normal uppercase block break-words"
         >
           {name}
         </Link>
