@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import SecondaryButton from "../components/button/SecondaryButton";
 
-const CheckoutPayment = () => {
+const CheckoutPayment = ({ submitting }) => {
   return (
     <div className="py-10 bg-white text-black">
       <div className="px-10 pb-8 mb-8 border-b border-gray-100">
@@ -24,7 +24,11 @@ const CheckoutPayment = () => {
         <Link to="" className="text-blue-400 hover:underline">
           privacy policy
         </Link>
-        <SecondaryButton btnText="PLACE ORDER" type="submit" />
+        <SecondaryButton
+          btnText="PLACE ORDER"
+          type="submit"
+          disabled={submitting}
+        />
       </div>
     </div>
   );

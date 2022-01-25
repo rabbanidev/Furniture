@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -6,6 +6,10 @@ import BillingDetails from "./BillingDetails";
 import CheckoutPayment from "./CheckoutPayment";
 import Order from "./Order";
 import ShippingAddress from "./ShippingAddress";
+import { useGlobalContext } from "../hooks/context";
+import { total } from "../calculate";
+import { usePostData } from "../hooks/dataApi";
+import toast from "react-hot-toast";
 
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -42,14 +46,18 @@ const schema = yup.object().shape({
 });
 
 const Checkout = () => {
+  const value = useGlobalContext();
+  const { mutateAsync } = usePostData();
+  const [submitting, setSubmitting] = useState(false);
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const onSubmit = (data) => {
-    const billingAddress = {
+  const onSubmit = async (data) => {
+    const billingDetails = {
       firstName: data.firstName,
       lastName: data.lastName,
       companyName: data.companyName,
@@ -73,11 +81,36 @@ const Checkout = () => {
       postalCode: data.shippingPostalCode,
       orderNotes: data.shippingOrderNotes,
     };
-    const placeOrder = {
-      billingAddress: [{ ...billingAddress }],
-      shippingAddress: [{ ...shippingAddress }],
+    const formData = {
+      cartItems: value.cartItems,
+      billingDetails,
+      shippingAddress,
+      taxPrice: 0,
+      shippingPrice: 0,
+      totalPrice: Number(total(value.cartItems)),
     };
-    console.log(placeOrder);
+    setSubmitting(true);
+    try {
+      const { status, data } = await mutateAsync({
+        path: "/add-order",
+        formData: formData,
+      });
+      if (status === 201) {
+        console.log(data);
+        toast.success(data.message);
+        reset();
+      }
+    } catch (error) {
+      if (error.response) {
+        toast.error("Response : " + error.response.data.message);
+      } else if (error.request) {
+        toast.error("Request : " + error.message);
+      } else {
+        toast.error("Error :", error.message);
+      }
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -90,7 +123,7 @@ const Checkout = () => {
           <BillingDetails register={register} errors={errors} />
           <Order />
           <ShippingAddress register={register} errors={errors} />
-          <CheckoutPayment />
+          <CheckoutPayment submitting={submitting} />
         </div>
       </div>
     </form>

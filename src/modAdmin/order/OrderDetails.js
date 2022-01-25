@@ -2,7 +2,13 @@ import React from "react";
 import List from "./List";
 import OrderItem from "./OrderItem";
 
-const OrderDetails = ({ orderItems, billingDetails, userInfo }) => {
+const OrderDetails = ({
+  orderItems,
+  billingDetails,
+  shipiingDetails,
+  userInfo,
+  orderSummary,
+}) => {
   const { fullName, email } = userInfo;
   const {
     firstName,
@@ -16,6 +22,19 @@ const OrderDetails = ({ orderItems, billingDetails, userInfo }) => {
     city,
     country,
   } = billingDetails;
+  const {
+    firstName: shippingFirstName,
+    lastName: shippingLastName,
+    companyName: shippingCompanyName,
+    country: shippingCountry,
+    streetAddress: shippingStreetAddress,
+    appartment: shipiingAppartment,
+    city: shipiingCity,
+    district: shipiingDistrict,
+    postalCode: shipiingPostalCode,
+    orderNotes: shipiingOrderNotes,
+  } = shipiingDetails;
+
   return (
     <div>
       <h3 className="text-xl font-normal block break-words">
@@ -42,7 +61,7 @@ const OrderDetails = ({ orderItems, billingDetails, userInfo }) => {
         </div>
         <div className="col-span-5">
           <List
-            title="BillingDetails"
+            title="Billing Details"
             list={[
               {
                 label: "Name",
@@ -83,9 +102,80 @@ const OrderDetails = ({ orderItems, billingDetails, userInfo }) => {
             ]}
           />
         </div>
-
-        {/* <BillingDetails billingDetails={billingDetails} />
-        <div className="col-span-3">One</div> */}
+        <div className="col-span-3">
+          <List
+            title="Order Summary"
+            list={[
+              {
+                label: "Order Created",
+                value: orderSummary.orderDate,
+              },
+              {
+                label: "Payment Type",
+                value: orderSummary.paymentType,
+              },
+              {
+                label: "Shipping Price",
+                value: `AED ${orderSummary.shippingPrice}`,
+              },
+              {
+                label: "Tax Price",
+                value: `AED ${orderSummary.taxPrice}`,
+              },
+              {
+                label: "Total Price",
+                value: `AED ${orderSummary.totalPrice}`,
+              },
+            ]}
+          />
+        </div>
+        <div className="col-span-5">
+          <List
+            title="Shipping Details"
+            list={[
+              {
+                label: "First Name",
+                value: shippingFirstName,
+              },
+              {
+                label: "Last Name",
+                value: shippingLastName,
+              },
+              {
+                label: "Company",
+                value: shippingCompanyName,
+              },
+              {
+                label: "Street Address",
+                value: shippingStreetAddress,
+              },
+              {
+                label: "Appartment",
+                value: shipiingAppartment,
+              },
+              {
+                label: "Postal Code",
+                value: shipiingPostalCode,
+              },
+              {
+                label: "District",
+                value: shipiingDistrict,
+              },
+              {
+                label: "City",
+                value: shipiingCity,
+              },
+              {
+                label: "Country",
+                value: shippingCountry,
+              },
+              {
+                label: "Order Notes",
+                value: shipiingOrderNotes,
+              },
+            ]}
+          />
+        </div>
       </div>
     </div>
   );

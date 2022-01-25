@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Error from "../../components/Error";
 import AdminLayout from "../../components/layout/AdminLayout";
 import { HashLoading } from "../../components/Loading";
+import Steps from "../../components/Steps";
 import TopHeader from "../../components/TopHeader";
 import { useGetData } from "../../hooks/dataApi";
 import OrderDetails from "./OrderDetails";
@@ -41,10 +42,21 @@ const OrderEdit = () => {
           btnSave={false}
           path="/admin/order-list"
         />
+
+        <Steps orderStatus={list.data.orderStatus} />
+
         <OrderDetails
           orderItems={list.data.orderItems}
           billingDetails={list.data.billingDetails}
+          shipiingDetails={list.data.shippingAddress}
           userInfo={list.data.user}
+          orderSummary={{
+            orderDate: list.data.orderDate,
+            shippingPrice: list.data.shippingPrice,
+            taxPrice: list.data.taxPrice,
+            totalPrice: list.data.totalPrice,
+            paymentType: list.data.paymentType,
+          }}
         />
       </div>
     </AdminLayout>
