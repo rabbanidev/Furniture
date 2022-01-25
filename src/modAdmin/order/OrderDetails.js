@@ -3,6 +3,7 @@ import List from "./List";
 import OrderItem from "./OrderItem";
 
 const OrderDetails = ({
+  orderId,
   orderItems,
   billingDetails,
   shipiingDetails,
@@ -37,14 +38,14 @@ const OrderDetails = ({
 
   return (
     <div>
-      <h3 className="text-xl font-normal block break-words">
-        Order Id: #156536589
+      <h3 className="text-xl font-normal block break-words mb-3">
+        Order Id: #{orderId}
       </h3>
-      <div className="grid grid-cols-8 gap-4">
-        <div className="col-span-5">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-8">
+        <div className="md:col-span-5">
           <OrderItem orderItems={orderItems} />
         </div>
-        <div className="col-span-3">
+        <div className="md:col-span-3">
           <List
             title="User Information"
             list={[
@@ -59,7 +60,7 @@ const OrderDetails = ({
             ]}
           />
         </div>
-        <div className="col-span-5">
+        <div className="md:col-span-5">
           <List
             title="Billing Details"
             list={[
@@ -102,7 +103,7 @@ const OrderDetails = ({
             ]}
           />
         </div>
-        <div className="col-span-3">
+        <div className="md:col-span-3">
           <List
             title="Order Summary"
             list={[
@@ -129,7 +130,7 @@ const OrderDetails = ({
             ]}
           />
         </div>
-        <div className="col-span-5">
+        <div className="md:col-span-5">
           <List
             title="Shipping Details"
             list={[

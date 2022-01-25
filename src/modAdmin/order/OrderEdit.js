@@ -32,7 +32,7 @@ const OrderEdit = () => {
       </AdminLayout>
     );
 
-  console.log("list", list.data);
+  // console.log("list", list.data);
 
   return (
     <AdminLayout>
@@ -42,10 +42,13 @@ const OrderEdit = () => {
           btnSave={false}
           path="/admin/order-list"
         />
-
-        <Steps orderStatus={list.data.orderStatus} />
-
+        <Steps
+          orderId={list.data.id}
+          orderStatus={list.data.orderStatus}
+          action={refetch}
+        />
         <OrderDetails
+          orderId={list.data.id}
           orderItems={list.data.orderItems}
           billingDetails={list.data.billingDetails}
           shipiingDetails={list.data.shippingAddress}

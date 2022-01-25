@@ -30,8 +30,6 @@ const OrderList = () => {
       </AdminLayout>
     );
 
-  console.log("admin", list.data);
-
   return (
     <AdminLayout>
       <div className="card w-full max-w-screen-xl">

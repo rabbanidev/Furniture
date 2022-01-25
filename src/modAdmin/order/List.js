@@ -11,7 +11,7 @@ const List = ({ title, list }) => {
             className="flex justify-between bg-gray-100 p-2 odd:bg-gray-200 hover:bg-gray-400 hover:text-white"
           >
             <span>{item.label}</span>
-            <span>{item.value}</span>
+            <span className="overflow-x-hidden">{item.value}</span>
           </div>
         ))}
       </div>
