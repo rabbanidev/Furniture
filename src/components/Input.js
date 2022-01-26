@@ -6,6 +6,7 @@ const Input = ({
   placeholder,
   label,
   register,
+  disabled = false,
   errorMessage,
   defaultValue,
 }) => {
@@ -27,6 +28,7 @@ const Input = ({
           errorMessage ? "input-border-danger" : "input-border-primary"
         }`}
         placeholder={placeholder}
+        disabled={disabled}
         {...register(name)}
       />
       <p className="text-red-400 text-sm capitalize">{errorMessage}</p>

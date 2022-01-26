@@ -14,7 +14,7 @@ export const ListCol = ({ label, value }) => {
       <span className="inline-block capitalize md:hidden font-semibold">
         {label}
       </span>
-      <span className="break-words capitalize">{value}</span>
+      <span className="break-words">{value}</span>
     </div>
   );
 };
