@@ -1,4 +1,4 @@
-import { FiDatabase, FiHeart, FiSmile, FiStar } from "react-icons/fi";
+import { FiDatabase, FiHeart, FiSmile } from "react-icons/fi";
 
 const navbarData = [
   {
@@ -113,11 +113,6 @@ const userData = [
     label: "My Orders",
     to: "/user/my-orders",
     Icon: FiDatabase,
-  },
-  {
-    label: "My Reviews",
-    to: "/user/my-reviews",
-    Icon: FiStar,
   },
   {
     label: "My Whitelist",

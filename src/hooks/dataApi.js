@@ -40,6 +40,34 @@ export const useGetData = (key, path) => {
   return { status, data, error, isLoading, isError, refetch };
 };
 
+export const useGetDataWithLogin = (key, path) => {
+  const value = useGlobalContext();
+
+  const { status, data, error, isLoading, isError, refetch } = useQuery(
+    [
+      key,
+      {
+        path: path,
+        headers: {
+          Authorization: "Bearer " + value.user,
+        },
+      },
+    ],
+    ({ queryKey }) => {
+      const { path, headers } = queryKey[1];
+      return (
+        value.user &&
+        request({
+          method: "GET",
+          url: path,
+          headers: headers,
+        })
+      );
+    }
+  );
+  return { status, data, error, isLoading, isError, refetch };
+};
+
 export const useDeleteData = () => {
   const value = useGlobalContext();
   return useMutation(({ path }) =>

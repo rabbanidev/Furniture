@@ -12,6 +12,7 @@ import ModCheckout from "./modCheckout";
 
 import * as ModAuthnication from "./modAuthnication";
 import * as ModAdmin from "./modAdmin";
+import * as ModUser from "./modUser";
 import PrivateRoute from "./modAuthnication/ProtectedRoute";
 const NotFound = lazy(() => import("./components/NotFound"));
 
@@ -53,6 +54,11 @@ function App() {
 
           <PrivateRoute path="/checkout">
             <ModCheckout />
+          </PrivateRoute>
+
+          {/* User Route */}
+          <PrivateRoute path="/user/my-account">
+            <ModUser.MyAccount />
           </PrivateRoute>
 
           {/* Admin Route */}
