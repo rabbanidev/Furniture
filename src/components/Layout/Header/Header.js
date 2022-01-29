@@ -8,6 +8,8 @@ import MobileNavbar from "./mobileNavbar";
 import Search from "./search/Search";
 import User from "./user/User";
 
+const envRole = process.env.REACT_APP_ROLE;
+
 const Header = () => {
   const { data: list } = useGetDataWithLogin("userInfo", "/userinfo");
 
@@ -25,13 +27,13 @@ const Header = () => {
       </div>
       <div className="flex justify-end gap-x-2 lg:col-span-2">
         <Search />
-        <Cart />
+        <Cart role={list?.data.role} envRole={envRole} />
         <User />
         <div className="lg:hidden">
           <MobileSidebar />
           <MobileNavbar />
         </div>
-        {list?.data.role === process.env.REACT_APP_ROLE && (
+        {list?.data.role === envRole && (
           <Link
             to="/admin/dashboard"
             className="font-semibold mt-1 hover:underline"

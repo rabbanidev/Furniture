@@ -2,20 +2,18 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import Error from "../../components/Error";
 import AdminLayout from "../../components/layout/AdminLayout";
+import OrderDetailsPage from "../../modAdmin/order/OrderDetails";
 import { HashLoading } from "../../components/Loading";
-import TopHeader from "../../components/TopHeader";
 import { useGetData } from "../../hooks/dataApi";
-import OrderDetails from "./OrderDetails";
-import OrderUpdate from "./OrderUpdate";
+import Steps from "../../components/Steps";
 
-const OrderEdit = () => {
+const OrderDetails = () => {
   const { id } = useParams();
   const {
     data: list,
     error,
     isLoading,
     isError,
-    refetch,
   } = useGetData("orders", `/order/${id}`);
 
   if (isLoading)
@@ -32,22 +30,12 @@ const OrderEdit = () => {
       </AdminLayout>
     );
 
-  // console.log("list", list.data);
-
   return (
     <AdminLayout>
       <div className="card w-full max-w-screen-xl">
-        <TopHeader
-          title="Order Edit"
-          btnSave={false}
-          path="/admin/order-list"
-        />
-        <OrderUpdate
-          orderId={list.data.id}
-          orderStatus={list.data.orderStatus}
-          action={refetch}
-        />
-        <OrderDetails
+        <h1 className="text-2xl font-medium">Order Details</h1>
+        <Steps orderStatus={list.data.orderStatus} />
+        <OrderDetailsPage
           orderId={list.data.id}
           orderItems={list.data.orderItems}
           billingDetails={list.data.billingDetails}
@@ -66,4 +54,4 @@ const OrderEdit = () => {
   );
 };
 
-export default OrderEdit;
+export default OrderDetails;

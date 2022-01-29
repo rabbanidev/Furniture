@@ -10,6 +10,7 @@ import { useGlobalContext } from "../hooks/context";
 import { total } from "../calculate";
 import { usePostData } from "../hooks/dataApi";
 import toast from "react-hot-toast";
+import { useHistory } from "react-router-dom";
 
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -46,6 +47,7 @@ const schema = yup.object().shape({
 });
 
 const Checkout = () => {
+  const history = useHistory();
   const value = useGlobalContext();
   const { mutateAsync } = usePostData();
   const [submitting, setSubmitting] = useState(false);
@@ -96,8 +98,9 @@ const Checkout = () => {
         formData: formData,
       });
       if (status === 201) {
-        console.log(data);
         toast.success(data.message);
+        value.deleteCartItems();
+        history.push("/user/my-account");
         reset();
       }
     } catch (error) {

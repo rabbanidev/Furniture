@@ -1,15 +1,5 @@
-import React from "react";
-import Layout from "../components/layout/Layout";
-import Cart from "./Cart";
-import CartTotal from "./CartTotal";
+import { lazy } from "react";
 
-const ModCartList = () => {
-  return (
-    <Layout>
-      <Cart />
-      <CartTotal />
-    </Layout>
-  );
-};
+const Cart = lazy(() => import("./Cart"));
 
-export default ModCartList;
+export { Cart };

@@ -39,6 +39,10 @@ const useData = () => {
     setCartItems(newCartItems);
   };
 
+  const deleteCartItems = () => {
+    setCartItems([]);
+  };
+
   const signOut = () => {
     setUser(null);
   };
@@ -51,6 +55,7 @@ const useData = () => {
     addToCart,
     quantityIncreaseOrDecrease,
     deleteCartItem,
+    deleteCartItems,
     signOut,
   };
 };

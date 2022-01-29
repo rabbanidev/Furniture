@@ -4,13 +4,13 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { FallbackLoading } from "./components/Loading";
 
 import "./App.css";
-import ModLanding from "./modLanding";
 import ModProductList from "./modProduct";
 import ProductDetails from "./modProduct/productDetails/ProductDetails";
-import ModCartList from "./modCart";
 import ModCheckout from "./modCheckout";
 
+import * as ModLanding from "./modLanding";
 import * as ModAuthnication from "./modAuthnication";
+import * as ModCart from "./modCart";
 import * as ModAdmin from "./modAdmin";
 import * as ModUser from "./modUser";
 import PrivateRoute from "./modAuthnication/ProtectedRoute";
@@ -23,7 +23,7 @@ function App() {
         <Toaster position="top-right" reverseOrder={false} />
         <Switch>
           <Route exact path="/">
-            <ModLanding />
+            <ModLanding.Landing />
           </Route>
 
           <Route path="/signin">
@@ -49,7 +49,7 @@ function App() {
             <ProductDetails />
           </Route>
           <Route path="/cart">
-            <ModCartList />
+            <ModCart.Cart />
           </Route>
 
           <PrivateRoute path="/checkout">
@@ -60,12 +60,17 @@ function App() {
           <PrivateRoute path="/user/my-account">
             <ModUser.MyAccount />
           </PrivateRoute>
+          <PrivateRoute exact path="/user/my-order">
+            <ModUser.MyOrder />
+          </PrivateRoute>
+          <PrivateRoute path="/user/my-order/details/:id">
+            <ModUser.OrderDetails />
+          </PrivateRoute>
 
           {/* Admin Route */}
           <PrivateRoute path="/admin/dashboard">
             <ModAdmin.Dashboard />
           </PrivateRoute>
-
           <PrivateRoute exact path="/admin/product-list">
             <ModAdmin.ProductList />
           </PrivateRoute>

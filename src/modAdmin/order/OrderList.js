@@ -13,7 +13,6 @@ const OrderList = () => {
     error,
     isLoading,
     isError,
-    refetch,
   } = useGetData("orders", "/order-list");
 
   if (isLoading)
@@ -43,7 +42,7 @@ const OrderList = () => {
             <ListHeader label="Shipping Address" />
             <ListHeader label="Total Price" />
             <ListHeader label="Date" />
-            <ListHeader label="Status" />
+            <ListHeader label="Payment Type" />
             <ListHeader label="Action" />
           </div>
           {list.data.map((item) => {
@@ -52,7 +51,7 @@ const OrderList = () => {
               user,
               shippingAddress,
               totalPrice,
-              orderStatus,
+              paymentType,
               orderDate,
             } = item;
 
@@ -72,7 +71,7 @@ const OrderList = () => {
                   label="Date : "
                   value={moment.utc(orderDate).local().format("YYYY-MM-DD")}
                 />
-                <ListCol label="Status : " value={orderStatus.type} />
+                <ListCol label="Payment Type : " value={paymentType} />
                 <div>
                   <div className="flex justify-start space-x-2">
                     <EditButton path={`/admin/order-list/edit/${id}`} />

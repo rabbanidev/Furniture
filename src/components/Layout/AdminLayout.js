@@ -5,8 +5,8 @@ import Sidebar from "./sidebar/Sidebar";
 const AdminLayout = ({ children }) => {
   return (
     <div className="w-screen h-screen text-white overflow-hidden">
-      <div className="grid lg:grid-cols-layout w-full h-screen max-w-screen-3xl mx-auto">
-        <div className="hidden lg:block">
+      <div className="grid xl:grid-cols-layout w-full h-screen max-w-screen-3xl mx-auto">
+        <div className="hidden xl:block">
           <Sidebar />
         </div>
         <div className="grid grid-rows-layout w-full h-screen overflow-hidden bg-light text-dark">
