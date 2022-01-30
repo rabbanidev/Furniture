@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import Error from "../components/Error";
 import { HashLoading } from "../components/Loading";
 import { useGetData } from "../hooks/dataApi";
-import Product from "./Product";
+import SingleProduct from "./SingleProduct";
 
 const ProductList = () => {
   const { category, subCategory, superCategory } = useParams();
@@ -27,7 +27,7 @@ const ProductList = () => {
       </div>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
         {list.data.map((product) => (
-          <Product key={product.id} product={product} />
+          <SingleProduct key={product.id} product={product} />
         ))}
       </div>
     </div>

@@ -1,13 +1,6 @@
-import React from "react";
-import Layout from "../components/layout/Layout";
-import ProductList from "./ProductList";
+import { lazy } from "react";
 
-const ModProductList = () => {
-  return (
-    <Layout>
-      <ProductList />
-    </Layout>
-  );
-};
+const ProductList = lazy(() => import("./Product"));
+const ProductDetails = lazy(() => import("./productDetails/ProductDetails"));
 
-export default ModProductList;
+export { ProductList, ProductDetails };
