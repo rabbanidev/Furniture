@@ -101,6 +101,7 @@ const SignUp = ({ setToggle }) => {
             Icon={FaSignInAlt}
             type="submit"
             btnWidth="w-32"
+            disabled={submitting}
           />
         </div>
       </form>

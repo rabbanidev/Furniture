@@ -7,10 +7,10 @@ const Cart = ({ role, envRole }) => {
   const value = useGlobalContext();
   return (
     role !== envRole && (
-      <div>
+      <div className="flex">
         <Link
           to="/cart"
-          className="px-2 py-1 relative flex justify-center items-center"
+          className="px-1 py-1 relative flex justify-center items-center"
         >
           <IoCartSharp size={25} />
           <div className="w-5 h-5 text-sm rounded-full bg-red-300 text-white flex items-center justify-center">

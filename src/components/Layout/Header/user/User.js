@@ -50,7 +50,7 @@ const User = () => {
               <li key={index}>
                 <Link
                   to={item.to}
-                  className="py-2 px-9 flex gap-x-3 items-center text-sm font-normal"
+                  className="py-2 px-5 flex gap-x-3 items-center text-sm font-normal hover:bg-gray-300"
                 >
                   <item.Icon size={20} />
                   {item.label}
@@ -58,13 +58,13 @@ const User = () => {
               </li>
             ))}
             <li>
-              <button
-                className="py-2 px-9 flex gap-x-3 items-center text-sm font-normal"
+              <span
+                className="py-2 px-5 flex gap-x-3 items-center text-sm font-normal cursor-pointer hover:bg-gray-300"
                 onClick={signOut}
               >
                 <FiLogIn size={20} />
                 Logout
-              </button>
+              </span>
             </li>
           </ul>
         </div>

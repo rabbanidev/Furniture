@@ -62,11 +62,14 @@ function App() {
           <PrivateRoute path="/user/my-account">
             <ModUser.MyAccount />
           </PrivateRoute>
-          <PrivateRoute exact path="/user/my-order">
+          <PrivateRoute exact path="/user/my-orders">
             <ModUser.MyOrder />
           </PrivateRoute>
           <PrivateRoute path="/user/my-order/details/:id">
             <ModUser.OrderDetails />
+          </PrivateRoute>
+          <PrivateRoute path="/user/my-address-book">
+            <ModUser.UserAddress />
           </PrivateRoute>
 
           {/* Admin Route */}

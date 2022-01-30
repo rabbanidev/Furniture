@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Input from "../components/Input";
 
-const ShippingAddress = ({ register, errors }) => {
-  const [expanded, setExpanded] = useState(false);
+const ShippingAddress = ({ register, errors, show }) => {
+  const [expanded, setExpanded] = useState(show);
   const {
     shippingFirstName,
     shippingLastName,
@@ -100,21 +100,21 @@ const ShippingAddress = ({ register, errors }) => {
             label="POSTAL / ZIP CODE(OPTIONAL)"
             register={register}
           />
+          {!show && (
+            <div className="form-row">
+              <label className="pb-0.5 text-gray-600 font-medium text-xs uppercase">
+                ORDER NOTES (OPTIONAL)
+              </label>
+              <textarea
+                type="text"
+                className="form-control input-border-primary "
+                placeholder=""
+                {...register("shippingOrderNotes")}
+              />
+            </div>
+          )}
         </>
       )}
-      <div
-        className={`form-row ${!expanded && "absolute top-10 left-0 right-0"}`}
-      >
-        <label className="pb-0.5 text-gray-600 font-medium text-xs uppercase">
-          ORDER NOTES (OPTIONAL)
-        </label>
-        <textarea
-          type="text"
-          className="form-control input-border-primary "
-          placeholder=""
-          {...register("shippingOrderNotes")}
-        />
-      </div>
     </div>
   );
 };

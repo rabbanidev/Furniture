@@ -89,6 +89,7 @@ const SignIn = ({ setToggle }) => {
             Icon={FaSignInAlt}
             type="submit"
             btnWidth="w-32"
+            disabled={submitting}
           />
         </div>
       </form>

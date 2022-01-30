@@ -6,32 +6,30 @@ const Input = ({
   placeholder,
   label,
   register,
-  disabled = false,
   errorMessage,
   defaultValue,
+  disabled,
 }) => {
+  const labelClass = `pb-0.5 font-medium text-xs uppercase ${
+    errorMessage ? "text-red-400" : "text-gray-600"
+  }`;
+
+  const inputClass = `form-control ${
+    errorMessage ? "input-border-danger" : "input-border-primary"
+  }`;
+
   return (
     <div className="form-row">
-      {label && (
-        <label
-          className={`pb-0.5 font-medium text-xs uppercase ${
-            errorMessage ? "text-red-400" : "text-gray-600"
-          }`}
-        >
-          {label}
-        </label>
-      )}
+      {label && <label className={labelClass}>{label}</label>}
       <input
         defaultValue={defaultValue}
         type={type}
-        className={`form-control ${
-          errorMessage ? "input-border-danger" : "input-border-primary"
-        }`}
+        className={inputClass}
         placeholder={placeholder}
-        disabled={disabled}
         {...register(name)}
+        disabled={disabled}
       />
-      <p className="text-red-400 text-sm capitalize">{errorMessage}</p>
+      <p className="text-red-400 text-sm">{errorMessage}</p>
     </div>
   );
 };

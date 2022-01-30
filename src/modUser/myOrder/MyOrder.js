@@ -2,10 +2,11 @@ import moment from "moment";
 import React from "react";
 import EditButton from "../../components/button/EditButton";
 import Error from "../../components/Error";
-import AdminLayout from "../../components/layout/AdminLayout";
+import Layout from "../../components/layout/Layout";
 import { ListCol, ListHeader } from "../../components/ListCol";
 import { HashLoading } from "../../components/Loading";
 import { useGetData } from "../../hooks/dataApi";
+import Menubar from "../Menubar";
 
 const MyOrder = () => {
   const {
@@ -17,22 +18,23 @@ const MyOrder = () => {
 
   if (isLoading)
     return (
-      <AdminLayout>
+      <Layout>
         <HashLoading />
-      </AdminLayout>
+      </Layout>
     );
 
   if (isError)
     return (
-      <AdminLayout>
+      <Layout>
         <Error message={error.message} />
-      </AdminLayout>
+      </Layout>
     );
 
   return (
-    <AdminLayout>
-      {list.data.length > 0 ? (
-        <div className="card w-full max-w-screen-xl">
+    <Layout>
+      <div className="grid gap-4 lg:grid-cols-6">
+        <Menubar />
+        <div className="card w-full max-w-screen-xl lg:col-span-5">
           <div className="flex justify-between px-0 pb-2">
             <h1 className="text-2xl font-medium">My Order</h1>
           </div>
@@ -83,10 +85,8 @@ const MyOrder = () => {
             })}
           </div>
         </div>
-      ) : (
-        <Error message="Your Order is empty." />
-      )}
-    </AdminLayout>
+      </div>
+    </Layout>
   );
 };
 

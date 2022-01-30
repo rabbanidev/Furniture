@@ -72,7 +72,7 @@ const ProductForm = ({ defaultValues, action, btnText, path, returnPath }) => {
         formData.append("images", data.files[i]);
       }
     }
-
+    setSubmitting(true);
     try {
       const { status, data } = await mutateAsync({
         path: path,

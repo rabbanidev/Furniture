@@ -19,18 +19,22 @@ const Header = () => {
     >
       <div className="lg:col-span-2">
         <Link to="/">
-          <img src={"/images/logo.png"} alt="Furniture" />
+          <img
+            src={"/images/logo.png"}
+            alt="Furniture"
+            className="w-36 lg:w-40"
+          />
         </Link>
       </div>
-      <div className="hidden lg:block lg:col-span-8">
+      <div className="hidden lg:block lg:col-span-7">
         <DesktopNavbar />
       </div>
-      <div className="flex justify-end gap-x-2 lg:col-span-2">
+      <div className="flex justify-end gap-x-2 lg:col-span-3">
         <Search />
         <Cart role={list?.data.role} envRole={envRole} />
         <User />
         <div className="lg:hidden">
-          <MobileSidebar />
+          {list?.data.role === envRole && <MobileSidebar />}
           <MobileNavbar />
         </div>
         {list?.data.role === envRole && (

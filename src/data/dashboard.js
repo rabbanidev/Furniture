@@ -1,5 +1,5 @@
 import { HiOutlineHome, HiOutlineShoppingBag } from "react-icons/hi";
-import { FiBox, FiHeart } from "react-icons/fi";
+import { FiBox } from "react-icons/fi";
 
 export const admindashboard = [
   {
@@ -34,10 +34,5 @@ export const userdashboard = [
     name: "My Order",
     link: "/user/my-order",
     Icon: HiOutlineShoppingBag,
-  },
-  {
-    name: "My Whitelist",
-    link: "/user/my-whitelist",
-    Icon: FiHeart,
   },
 ];

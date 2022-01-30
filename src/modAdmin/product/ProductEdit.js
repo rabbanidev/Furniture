@@ -31,9 +31,6 @@ const ProductEdit = () => {
       </AdminLayout>
     );
 
-  const { shipping, sizeing, assistance, storeMail } =
-    list.data.information || {};
-
   const defaultValues = {
     name: list.data.name,
     type: list.data.type,
@@ -43,12 +40,7 @@ const ProductEdit = () => {
     title: list.data.title,
     setincludes: list.data.setincludes,
     shortDes: list.data.shortDes,
-    information: {
-      // shipping: list.data.information.shipping,
-      // sizeing: list.data.information.sizeing,
-      // assistance: list.data.information.assistance,
-      // storeMail: list.data.information.storeMail,
-    },
+    information: {},
     description: list.data.description,
     files: null,
   };

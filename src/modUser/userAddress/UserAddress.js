@@ -1,16 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import BillingDetails from "./BillingDetails";
-import CheckoutPayment from "./CheckoutPayment";
-import Order from "./Order";
-import ShippingAddress from "./ShippingAddress";
-import { useGlobalContext } from "../hooks/context";
-import { total } from "../calculate";
-import { usePostData } from "../hooks/dataApi";
+import Layout from "../../components/layout/Layout";
+import Menubar from "../Menubar";
+import { usePostData } from "../../hooks/dataApi";
+import { useState } from "react";
+import BillingDetails from "../../modCheckout/BillingDetails";
+import ShippingAddress from "../../modCheckout/ShippingAddress";
+import SecondaryButton from "../../components/button/SecondaryButton";
 import toast from "react-hot-toast";
-import { useHistory } from "react-router-dom";
 
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -31,9 +30,7 @@ const schema = yup.object().shape({
     .required("Email is required"),
 });
 
-const Checkout = () => {
-  const history = useHistory();
-  const value = useGlobalContext();
+const UserAddress = () => {
   const { mutateAsync } = usePostData();
   const [submitting, setSubmitting] = useState(false);
   const {
@@ -41,7 +38,9 @@ const Checkout = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(schema) });
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   const onSubmit = async (data) => {
     const billingDetails = {
@@ -69,23 +68,18 @@ const Checkout = () => {
       orderNotes: data.shippingOrderNotes,
     };
     const formData = {
-      cartItems: value.cartItems,
       billingDetails,
       shippingAddress,
-      taxPrice: 0,
-      shippingPrice: 0,
-      totalPrice: Number(total(value.cartItems)),
     };
+
     setSubmitting(true);
     try {
-      const { status, data } = await mutateAsync({
-        path: "/add-order",
+      const { status } = await mutateAsync({
+        path: "/user/address-book/add",
         formData: formData,
       });
-      if (status === 201) {
-        toast.success(data.message);
-        value.deleteCartItems();
-        history.push("/user/my-account");
+      if (status === 204) {
+        toast.success("Update successfully.");
         reset();
       }
     } catch (error) {
@@ -102,20 +96,30 @@ const Checkout = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="pb-16 mt-5 text-gray-600">
-        <div className="mb-6">
-          <h1 className="pb-2 font-medium text-4xl uppercase">Checkout</h1>
-        </div>
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          <BillingDetails register={register} errors={errors} />
-          <Order />
-          <ShippingAddress register={register} errors={errors} show={false} />
-          <CheckoutPayment submitting={submitting} />
+    <Layout>
+      <div className="grid gap-4 lg:grid-cols-6">
+        <Menubar />
+        <div className="card w-full max-w-screen-xl lg:col-span-5">
+          <h1 className="text-2xl font-medium">My Address</h1>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="mt-5 grid grid-cols-1 gap-8 lg:grid-cols-2">
+              <BillingDetails register={register} errors={errors} />
+              <ShippingAddress
+                register={register}
+                errors={errors}
+                show={true}
+              />
+            </div>
+            <SecondaryButton
+              btnText="SAVE"
+              type="submit"
+              disabled={submitting}
+            />
+          </form>
         </div>
       </div>
-    </form>
+    </Layout>
   );
 };
 
-export default Checkout;
+export default UserAddress;
