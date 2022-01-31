@@ -59,19 +59,22 @@ const ProductForm = ({ defaultValues, action, btnText, path, returnPath }) => {
       data.shortDesTwo,
       data.shortDesThree,
     ]);
-    formData.append("information", {
+    formData.append("description", data.description);
+    const information = {
       shipping: data.shipping,
       sizeing: data.sizeing,
       assistance: data.assistance,
       storeMail: data.storeMail,
-    });
-    formData.append("description", data.description);
-
+    };
+    Object.keys(information).forEach((key) =>
+      formData.append(key, information[key])
+    );
     if (data.files.length > 0) {
       for (let i = 0; i < data.files.length; i++) {
         formData.append("images", data.files[i]);
       }
     }
+
     setSubmitting(true);
     try {
       const { status, data } = await mutateAsync({

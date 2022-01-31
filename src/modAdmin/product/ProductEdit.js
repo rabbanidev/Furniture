@@ -40,7 +40,10 @@ const ProductEdit = () => {
     title: list.data.title,
     setincludes: list.data.setincludes,
     shortDes: list.data.shortDes,
-    information: {},
+    shipping: list.data.information?.shipping,
+    sizeing: list.data.information?.sizeing,
+    assistance: list.data.information?.assistance,
+    storeMail: list.data.information?.storeMail,
     description: list.data.description,
     files: null,
   };
