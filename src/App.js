@@ -4,12 +4,12 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { FallbackLoading } from "./components/Loading";
 
 import "./App.css";
-import ModCheckout from "./modCheckout";
 
 import * as ModLanding from "./modLanding";
 import * as ModProduct from "./modProduct";
 import * as ModAuthnication from "./modAuthnication";
 import * as ModCart from "./modCart";
+import * as ModCheckout from "./modCheckout";
 import * as ModAdmin from "./modAdmin";
 import * as ModUser from "./modUser";
 import PrivateRoute from "./modAuthnication/ProtectedRoute";
@@ -55,7 +55,7 @@ function App() {
 
           {/* Mod Checkout */}
           <PrivateRoute path="/checkout">
-            <ModCheckout />
+            <ModCheckout.Checkout />
           </PrivateRoute>
 
           {/* User Route */}

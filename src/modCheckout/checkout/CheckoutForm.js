@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import BillingDetails from "./BillingDetails";
-import CheckoutPayment from "./CheckoutPayment";
-import Order from "./Order";
-import ShippingAddress from "./ShippingAddress";
-import { useGlobalContext } from "../hooks/context";
-import { total } from "../calculate";
-import { usePostData } from "../hooks/dataApi";
+import { useGlobalContext } from "../../hooks/context";
+import { total } from "../../calculate";
+import { usePostData } from "../../hooks/dataApi";
 import toast from "react-hot-toast";
 import { useHistory } from "react-router-dom";
+import BillingDetails from "../billingDetails/BillingDetails";
+import ShippingAddress from "../shippingAddress/ShippingAddress";
+import CheckoutPayment from "../checkoutPayment/CheckoutPayment";
+import Order from "../order/Order";
 
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -31,7 +31,7 @@ const schema = yup.object().shape({
     .required("Email is required"),
 });
 
-const Checkout = () => {
+const CheckoutForm = ({ defaultValues }) => {
   const history = useHistory();
   const value = useGlobalContext();
   const { mutateAsync } = usePostData();
@@ -41,7 +41,10 @@ const Checkout = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(schema) });
+  } = useForm({
+    defaultValues: defaultValues,
+    resolver: yupResolver(schema),
+  });
 
   const onSubmit = async (data) => {
     const billingDetails = {
@@ -118,4 +121,4 @@ const Checkout = () => {
   );
 };
 
-export default Checkout;
+export default CheckoutForm;

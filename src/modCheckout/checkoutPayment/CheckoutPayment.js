@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import SecondaryButton from "../components/button/SecondaryButton";
+import SecondaryButton from "../../components/button/SecondaryButton";
 
 const CheckoutPayment = ({ submitting }) => {
   return (

@@ -8,6 +8,7 @@ const Input = ({
   register,
   errorMessage,
   defaultValue,
+
   disabled,
 }) => {
   const labelClass = `pb-0.5 font-medium text-xs uppercase ${

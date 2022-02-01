@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { subTotal, total } from "../calculate";
-import { useGlobalContext } from "../hooks/context";
+import { subTotal, total } from "../../calculate";
+import { useGlobalContext } from "../../hooks/context";
 
 const Order = () => {
   const value = useGlobalContext();

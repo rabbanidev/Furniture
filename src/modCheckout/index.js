@@ -1,13 +1,5 @@
-import React from "react";
-import Layout from "../components/layout/Layout";
-import Checkout from "./Checkout";
+import { lazy } from "react";
 
-const ModCheckout = () => {
-  return (
-    <Layout>
-      <Checkout />
-    </Layout>
-  );
-};
+const Checkout = lazy(() => import("./checkout/Checkout"));
 
-export default ModCheckout;
+export { Checkout };

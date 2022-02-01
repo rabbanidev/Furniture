@@ -7,12 +7,13 @@ import SingleProduct from "./SingleProduct";
 
 const ProductList = () => {
   const { category, subCategory, superCategory } = useParams();
+  const type = superCategory || subCategory || category;
   const {
     data: list,
     isLoading,
     isError,
     error,
-  } = useGetData("product-list", "/product-list");
+  } = useGetData("product-list", `/product-list/${type}`);
 
   if (isLoading) return <HashLoading />;
 
@@ -22,7 +23,7 @@ const ProductList = () => {
     <div className="pb-16">
       <div className="my-5">
         <h1 className="pb-2 font-medium text-4xl uppercase">
-          {superCategory || subCategory || category}
+          {type}
         </h1>
       </div>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">

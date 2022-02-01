@@ -3,10 +3,9 @@ import Error from "../../components/Error";
 import Layout from "../../components/layout/Layout";
 import { HashLoading } from "../../components/Loading";
 import { useGetData } from "../../hooks/dataApi";
-import Menubar from "../Menubar";
-import UserAddressForm from "./UserAddressForm";
+import CheckoutForm from "./CheckoutForm";
 
-const UserAddress = () => {
+const Checkout = () => {
   const {
     data: list,
     isLoading,
@@ -54,15 +53,9 @@ const UserAddress = () => {
 
   return (
     <Layout>
-      <div className="grid gap-4 lg:grid-cols-6">
-        <Menubar />
-        <div className="card w-full max-w-screen-xl lg:col-span-5">
-          <h1 className="text-2xl font-medium">My Address</h1>
-          <UserAddressForm defaultValues={defaultValues} />
-        </div>
-      </div>
+      <CheckoutForm defaultValues={defaultValues} />
     </Layout>
   );
 };
 
-export default UserAddress;
+export default Checkout;

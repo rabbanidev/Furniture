@@ -4,7 +4,6 @@ import { useGetDataWithLogin } from "../../../hooks/dataApi";
 import MobileSidebar from "../sidebar/MobileSidebar";
 import Cart from "./cart/Cart";
 import DesktopNavbar from "./desktopNavabar";
-import MobileNavbar from "./mobileNavbar";
 import Search from "./search/Search";
 import User from "./user/User";
 
@@ -12,6 +11,8 @@ const envRole = process.env.REACT_APP_ROLE;
 
 const Header = () => {
   const { data: list } = useGetDataWithLogin("userInfo", "/userinfo");
+
+  const role = list?.data.role;
 
   return (
     <div
@@ -31,13 +32,14 @@ const Header = () => {
       </div>
       <div className="flex justify-end gap-x-2 lg:col-span-3">
         <Search />
-        <Cart role={list?.data.role} envRole={envRole} />
-        <User />
-        <div className="lg:hidden">
-          {list?.data.role === envRole && <MobileSidebar />}
-          <MobileNavbar />
-        </div>
-        {list?.data.role === envRole && (
+        {role !== envRole && (
+          <>
+            <Cart />
+            <User />
+          </>
+        )}
+        <div className="lg:hidden">{role === envRole && <MobileSidebar />}</div>
+        {role === envRole && (
           <Link
             to="/admin/dashboard"
             className="font-semibold mt-1 hover:underline"
