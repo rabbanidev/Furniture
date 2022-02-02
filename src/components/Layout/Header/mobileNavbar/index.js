@@ -58,7 +58,7 @@ const MobileNavbar = () => {
               <div className="relative top-20 bg-white w-full px-5 py-3">
                 {navbarData.map((item, index) => {
                   return (
-                    <NavItem key={index} item={item} modalOpen={setIsOpen} />
+                    <NavItem key={index} item={item} closeModal={closeModal} />
                   );
                 })}
               </div>
@@ -72,7 +72,7 @@ const MobileNavbar = () => {
 
 export default MobileNavbar;
 
-const NavItem = ({ item, modalOpen }) => {
+const NavItem = ({ item, closeModal }) => {
   const { title, to, children } = item;
 
   if (children) {
@@ -85,7 +85,7 @@ const NavItem = ({ item, modalOpen }) => {
       to={to}
       className="block my-0.5 text-md uppercase font-medium"
       activeClassName="text-red-500"
-      onClick={() => modalOpen(false)}
+      onClick={closeModal}
     >
       {title}
     </NavLink>
@@ -115,12 +115,12 @@ const NavItemHeader = (props) => {
 
       {expanded && (
         <div className="ml-2">
-          {children.map((item) => {
+          {children.map((item, index) => {
             const { title, children } = item;
 
             if (children) {
               return (
-                <div>
+                <div key={index}>
                   <NavItemHeader
                     item={{
                       ...item,
@@ -133,6 +133,7 @@ const NavItemHeader = (props) => {
 
             return (
               <NavLink
+                key={index}
                 to={item.to}
                 className="mt-0.5 text-md block capitalize font-medium"
                 activeClassName="text-red-500"
