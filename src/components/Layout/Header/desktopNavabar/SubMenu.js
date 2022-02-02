@@ -8,21 +8,18 @@ const SubMenu = ({ item }) => {
         {item.title}
       </Link>
       <ul className="sub-nav shadow">
-        <div className={`px-8 grid grid-cols-${item.categories.length}`}>
-          {item.categories.map((category, index) => (
+        <div className={`px-8 grid grid-cols-${item.children.length}`}>
+          {item.children.map((subItem, index) => (
             <div key={index}>
-              <Link to={category.to} className="text-black font-medium">
-                {category.title}
+              <Link to={subItem.to} className="text-black font-medium">
+                {subItem.title}
               </Link>
               <ul>
-                {category.subCategories.length > 0 &&
-                  category.subCategories.map((subCategory, idx) => (
+                {subItem.children.length > 0 &&
+                  subItem.children.map((superItem, idx) => (
                     <li key={idx}>
-                      <Link
-                        to={subCategory.to}
-                        className="text-black block py-2"
-                      >
-                        {subCategory.title}
+                      <Link to={superItem.to} className="text-black block py-2">
+                        {superItem.title}
                       </Link>
                     </li>
                   ))}

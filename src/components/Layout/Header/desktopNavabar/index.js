@@ -9,7 +9,7 @@ const DesktopNavbar = () => {
       <ul className="flex items-center">
         {navbarData.map((item, index) => (
           <div key={index}>
-            {!item.categories ? (
+            {!item.children ? (
               <li className="py-1 relative group">
                 <Link className="nav-item" to={item.to}>
                   {item.title}

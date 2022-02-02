@@ -4,6 +4,7 @@ import { useGetDataWithLogin } from "../../../hooks/dataApi";
 import MobileSidebar from "../sidebar/MobileSidebar";
 import Cart from "./cart/Cart";
 import DesktopNavbar from "./desktopNavabar";
+import MobileNavbar from "./mobileNavbar";
 import Search from "./search/Search";
 import User from "./user/User";
 
@@ -38,14 +39,21 @@ const Header = () => {
             <User />
           </>
         )}
-        <div className="lg:hidden">{role === envRole && <MobileSidebar />}</div>
+        <div className="lg:hidden">
+          <MobileNavbar />
+        </div>
         {role === envRole && (
-          <Link
-            to="/admin/dashboard"
-            className="font-semibold mt-1 hover:underline"
-          >
-            Admin
-          </Link>
+          <>
+            <div className="lg:hidden">
+              <MobileSidebar />
+            </div>
+            <Link
+              to="/admin/dashboard"
+              className="font-semibold mt-1 hover:underline"
+            >
+              Admin
+            </Link>
+          </>
         )}
       </div>
     </div>
