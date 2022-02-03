@@ -16,9 +16,7 @@ const Header = () => {
   const role = list?.data.role;
 
   return (
-    <div
-      className={`px-3 bg-white w-full grid grid-cols-2 items-center shadow-sm z-50 md:px-5 lg:grid-cols-12 lg:px-10 xl:px-16 2xl:px-24`}
-    >
+    <div className="px-3 bg-white w-full grid grid-cols-2 items-center shadow-sm z-50 md:px-5 lg:grid-cols-12 lg:px-10 xl:px-16 2xl:px-24">
       <div className="lg:col-span-2">
         <Link to="/">
           <img
@@ -37,11 +35,12 @@ const Header = () => {
           <>
             <Cart />
             <User />
+            <div className="lg:hidden">
+              <MobileNavbar />
+            </div>
           </>
         )}
-        <div className="lg:hidden">
-          <MobileNavbar />
-        </div>
+
         {role === envRole && (
           <>
             <div className="lg:hidden">

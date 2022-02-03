@@ -12,7 +12,7 @@ const ProductAdd = () => {
     inStock: false,
     title: "",
     setincludes: "",
-    shortDes: [],
+    shortDes: "",
     information: {
       shipping: "",
       sizeing: "",
@@ -21,6 +21,7 @@ const ProductAdd = () => {
     },
     description: "",
     files: null,
+    banner: null,
   };
 
   return (

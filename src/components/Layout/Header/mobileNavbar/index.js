@@ -56,7 +56,9 @@ const MobileNavbar = () => {
             >
               <div className="relative top-20 bg-white w-full px-5 py-3">
                 {navbarData.map((item, index) => {
-                  return <NavItem key={index} item={item} />;
+                  return (
+                    <NavItem key={index} item={item} closeModal={closeModal} />
+                  );
                 })}
               </div>
             </Transition.Child>

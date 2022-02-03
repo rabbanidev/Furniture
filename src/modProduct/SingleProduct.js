@@ -28,7 +28,7 @@ const SingleProduct = ({ product }) => {
         />
         <img
           className="w-full h-full relative transform duration-500 group-hover:opacity-0"
-          src={images[1].url}
+          src={images[1] ? images[1].url : images[0].url}
           alt={name}
         />
       </div>

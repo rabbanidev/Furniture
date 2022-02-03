@@ -31,20 +31,33 @@ const ProductEdit = () => {
       </AdminLayout>
     );
 
+  const {
+    name,
+    type,
+    oldPrice,
+    newPrice,
+    inStock,
+    title,
+    setincludes,
+    shortDes,
+    information,
+    description,
+  } = list.data;
+
   const defaultValues = {
-    name: list.data.name,
-    type: list.data.type,
-    oldPrice: list.data.oldPrice,
-    newPrice: list.data.newPrice,
-    inStock: list.data.inStock,
-    title: list.data.title,
-    setincludes: list.data.setincludes,
-    shortDes: list.data.shortDes,
-    shipping: list.data.information?.shipping,
-    sizeing: list.data.information?.sizeing,
-    assistance: list.data.information?.assistance,
-    storeMail: list.data.information?.storeMail,
-    description: list.data.description,
+    name: name,
+    type: type,
+    oldPrice: oldPrice,
+    newPrice: newPrice,
+    inStock: inStock,
+    title: title,
+    setincludes: setincludes,
+    shortDes: shortDes,
+    shipping: information.shipping,
+    sizeing: information.sizeing,
+    assistance: information.assistance,
+    storeMail: information.storeMail,
+    description: description,
     files: null,
   };
 

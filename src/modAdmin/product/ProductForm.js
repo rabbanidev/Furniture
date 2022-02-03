@@ -24,9 +24,16 @@ const schema = yup
     shipping: yup.string().required("Product shipping is required"),
   })
   .shape({
-    files: yup.mixed().test("fileSize", "Images is required.", (value) => {
-      return value && value[0];
-    }),
+    files: yup
+      .mixed()
+      .test("fileSize", "Product images is required.", (value) => {
+        return value && value[0];
+      }),
+    banner: yup
+      .mixed()
+      .test("fileSize", "Product banner is required.", (value) => {
+        return value && value[0];
+      }),
   });
 
 const ProductForm = ({ defaultValues, action, btnText, path, returnPath }) => {
@@ -43,7 +50,8 @@ const ProductForm = ({ defaultValues, action, btnText, path, returnPath }) => {
     resolver: yupResolver(schema),
   });
 
-  const { name, type, newPrice, oldPrice, title, shipping, files } = errors;
+  const { name, type, newPrice, oldPrice, title, shipping, files, banner } =
+    errors;
 
   const onSubmit = async (data) => {
     let formData = new FormData();
@@ -54,11 +62,7 @@ const ProductForm = ({ defaultValues, action, btnText, path, returnPath }) => {
     formData.append("inStock", Boolean(data.inStock));
     formData.append("title", data.title);
     formData.append("setincludes", data.setincludes);
-    formData.append("shortDes", [
-      data.shortDesOne,
-      data.shortDesTwo,
-      data.shortDesThree,
-    ]);
+    formData.append("shortDes", [data.shortDes]);
     formData.append("description", data.description);
     const information = {
       shipping: data.shipping,
@@ -74,6 +78,7 @@ const ProductForm = ({ defaultValues, action, btnText, path, returnPath }) => {
         formData.append("images", data.files[i]);
       }
     }
+    formData.append("banner", data.banner[0]);
 
     setSubmitting(true);
     try {
@@ -162,28 +167,19 @@ const ProductForm = ({ defaultValues, action, btnText, path, returnPath }) => {
           label="Shipping"
           register={register}
           errorMessage={shipping?.message}
-          defaultValue={defaultValues.information.shipping}
         />
-        <Input
-          name="sizeing"
-          type="text"
-          label="Sizeing"
-          register={register}
-          defaultValue={defaultValues.information.sizeing}
-        />
+        <Input name="sizeing" type="text" label="Sizeing" register={register} />
         <Input
           name="assistance"
           type="text"
           label="Assistance"
           register={register}
-          defaultValue={defaultValues.information.assistance}
         />
         <Input
           name="storeMail"
           type="text"
           label="Store Mail"
           register={register}
-          defaultValue={defaultValues.information.storeMail}
         />
         <Input
           name="description"
@@ -192,29 +188,32 @@ const ProductForm = ({ defaultValues, action, btnText, path, returnPath }) => {
           register={register}
         />
         <Input
-          name="shortDesOne"
+          name="shortDes"
           type="text"
           label="Short Description"
           register={register}
-          defaultValue={defaultValues.shortDes[0]}
         />
-        <Input
+        {/* <Input
           name="shortDesTwo"
           type="text"
           label="Short Description"
           register={register}
-          defaultValue={defaultValues.shortDes[1]}
         />
         <Input
           name="shortDesThree"
           type="text"
           label="Short Description"
           register={register}
-          defaultValue={defaultValues.shortDes[2]}
-        />
+        /> */}
         <div>
+          <label className="block uppercase">Product images</label>
           <input {...register("files")} type="file" name="files" multiple />
-          <p className="text-red-400 text-sm capitalize">{files?.message}</p>
+          <p className="text-red-400 text-sm">{files?.message}</p>
+        </div>
+        <div>
+          <label className="block uppercase">Product Banner</label>
+          <input {...register("banner")} type="file" name="banner" />
+          <p className="text-red-400 text-sm">{banner?.message}</p>
         </div>
         <SaveButton btnText={btnText} disabled={submitting} />
       </div>
