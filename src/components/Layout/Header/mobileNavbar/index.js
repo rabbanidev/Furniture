@@ -1,9 +1,8 @@
 import React, { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { FiMenu, FiX } from "react-icons/fi";
-import { NavLink } from "react-router-dom";
 import { navbarData } from "../../../../data/header";
-import { FaChevronRight } from "react-icons/fa";
+import NavItem from "./NavItem";
 
 const MobileNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -57,9 +56,7 @@ const MobileNavbar = () => {
             >
               <div className="relative top-20 bg-white w-full px-5 py-3">
                 {navbarData.map((item, index) => {
-                  return (
-                    <NavItem key={index} item={item} closeModal={closeModal} />
-                  );
+                  return <NavItem key={index} item={item} />;
                 })}
               </div>
             </Transition.Child>
@@ -71,79 +68,3 @@ const MobileNavbar = () => {
 };
 
 export default MobileNavbar;
-
-const NavItem = ({ item, closeModal }) => {
-  const { title, to, children } = item;
-
-  if (children) {
-    return <NavItemHeader item={item} />;
-  }
-
-  return (
-    <NavLink
-      exact
-      to={to}
-      className="block my-0.5 text-md uppercase font-medium"
-      activeClassName="text-red-500"
-      onClick={closeModal}
-    >
-      {title}
-    </NavLink>
-  );
-};
-
-const NavItemHeader = (props) => {
-  const { item } = props;
-  const { title, children } = item;
-  const [expanded, setExpand] = useState(false);
-
-  const onExpandChange = (e) => {
-    e.preventDefault();
-    setExpand((expanded) => !expanded);
-  };
-
-  return (
-    <>
-      <button
-        type="button"
-        className="w-full flex items-center gap-x-1"
-        onClick={onExpandChange}
-      >
-        <span className="my-0.5 text-md uppercase font-medium">{title}</span>
-        <FaChevronRight size={8} />
-      </button>
-
-      {expanded && (
-        <div className="ml-2">
-          {children.map((item, index) => {
-            const { title, children } = item;
-
-            if (children) {
-              return (
-                <div key={index}>
-                  <NavItemHeader
-                    item={{
-                      ...item,
-                      to: item.to,
-                    }}
-                  />
-                </div>
-              );
-            }
-
-            return (
-              <NavLink
-                key={index}
-                to={item.to}
-                className="mt-0.5 text-md block capitalize font-medium"
-                activeClassName="text-red-500"
-              >
-                {title}
-              </NavLink>
-            );
-          })}
-        </div>
-      )}
-    </>
-  );
-};

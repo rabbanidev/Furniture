@@ -5,6 +5,10 @@ import { FallbackLoading } from "./components/Loading";
 
 import "./App.css";
 
+import PrivateRoute, {
+  AdminPrivateRoute,
+  UserPrivateRoute,
+} from "./modAuthnication/ProtectedRoute";
 import * as ModLanding from "./modLanding";
 import * as ModProduct from "./modProduct";
 import * as ModAuthnication from "./modAuthnication";
@@ -12,9 +16,6 @@ import * as ModCart from "./modCart";
 import * as ModCheckout from "./modCheckout";
 import * as ModAdmin from "./modAdmin";
 import * as ModUser from "./modUser";
-import PrivateRoute, {
-  AdminPrivateRoute,
-} from "./modAuthnication/ProtectedRoute";
 const NotFound = lazy(() => import("./components/NotFound"));
 
 function App() {
@@ -65,13 +66,19 @@ function App() {
             <ModUser.MyAccount />
           </PrivateRoute>
           <PrivateRoute exact path="/user/my-orders">
-            <ModUser.MyOrder />
+            <UserPrivateRoute>
+              <ModUser.MyOrder />
+            </UserPrivateRoute>
           </PrivateRoute>
           <PrivateRoute path="/user/my-order/details/:id">
-            <ModUser.OrderDetails />
+            <UserPrivateRoute>
+              <ModUser.OrderDetails />
+            </UserPrivateRoute>
           </PrivateRoute>
           <PrivateRoute path="/user/my-address-book">
-            <ModUser.UserAddress />
+            <UserPrivateRoute>
+              <ModUser.UserAddress />
+            </UserPrivateRoute>
           </PrivateRoute>
 
           {/* Admin Route */}

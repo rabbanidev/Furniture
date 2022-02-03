@@ -49,10 +49,49 @@ export function AdminPrivateRoute({ children, ...rest }) {
       </Layout>
     );
 
+  const role = list.data.role === process.env.REACT_APP_ROLE;
+
+  return <Route {...rest} render={() => (role ? children : <NotFound />)} />;
+}
+
+export function UserPrivateRoute({ children, ...rest }) {
+  const {
+    data: list,
+    isLoading,
+    isError,
+    error,
+  } = useGetData("userInfo", "/userinfo");
+
+  if (isLoading)
+    return (
+      <Layout>
+        <HashLoading />
+      </Layout>
+    );
+  if (isError)
+    return (
+      <Layout>
+        <Error message={error.message} />
+      </Layout>
+    );
+
+  const role = list.data.role !== process.env.REACT_APP_ROLE;
+
   return (
     <Route
       {...rest}
-      render={() => (list.data.role === "admin" ? children : <NotFound />)}
+      render={({ location }) =>
+        role ? (
+          children
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/admin/dashboard",
+              state: { from: location },
+            }}
+          />
+        )
+      }
     />
   );
 }
