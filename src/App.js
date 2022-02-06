@@ -49,6 +49,9 @@ function App() {
           <Route path="/product-category/:category">
             <ModProduct.ProductList />
           </Route>
+          <Route path="/search/:keyword">
+            <ModProduct.SearchProduct />
+          </Route>
           <Route path="/product/:productId">
             <ModProduct.ProductDetails />
           </Route>
